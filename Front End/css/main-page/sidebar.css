@@ -1,0 +1,68 @@
+.sidebar {
+    position: absolute;
+    top: 40%;
+    right: 10%;
+    width: 80%; /* Ocupa el 80% en pantallas pequeñas */
+    height: 25%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.btn {
+    background-color: #317b8c; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambiar el cursor al pasar el ratón */
+    margin-bottom: 10px; /* Espacio entre botones */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.btn:hover {
+    background-color: #317b8c44; /* Color de fondo al pasar el ratón */
+}
+
+.new-user-text {
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    color: #000;
+}
+
+.register-link {
+    color: #317b8c;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+/* Estilos responsivos */
+@media (min-width: 768px) {
+    .sidebar {
+        width: 60%;
+        right: 20%;
+        padding: 20px;
+    }
+}
+
+@media (min-width: 992px) {
+    .sidebar {
+        width: 33.33%;
+        height: 50%;
+        padding: 2%;
+        top: 25%;
+        right: 2%;
+    }
+}

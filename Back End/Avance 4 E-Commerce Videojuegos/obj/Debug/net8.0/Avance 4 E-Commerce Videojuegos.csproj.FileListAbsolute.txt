@@ -1,0 +1,14 @@
+C:\NUR\Semestre II\Ingeniería Web I\Proyecto Final\Back End\Avance 4 E-Commerce Videojuegos\obj\Debug\net8.0\Avance 4 E-Commerce Videojuegos.GeneratedMSBuildEditorConfig.editorconfig
+C:\NUR\Semestre II\Ingeniería Web I\Proyecto Final\Back End\Avance 4 E-Commerce Videojuegos\obj\Debug\net8.0\Avance 4 E-Commerce Videojuegos.AssemblyInfoInputs.cache
+C:\NUR\Semestre II\Ingeniería Web I\Proyecto Final\Back End\Avance 4 E-Commerce Videojuegos\obj\Debug\net8.0\Avance 4 E-Commerce Videojuegos.AssemblyInfo.cs
+C:\NUR\Semestre II\Ingeniería Web I\Proyecto Final\Back End\Avance 4 E-Commerce Videojuegos\obj\Debug\net8.0\Avance 4 E-Commerce Videojuegos.csproj.CoreCompileInputs.cache
+C:\NUR\Semestre II\Ingeniería Web I\Proyecto Final\Back End\Avance 4 E-Commerce Videojuegos\bin\Debug\net8.0\Avance 4 E-Commerce Videojuegos.exe
+C:\NUR\Semestre II\Ingeniería Web I\Proyecto Final\Back End\Avance 4 E-Commerce Videojuegos\bin\Debug\net8.0\Avance 4 E-Commerce Videojuegos.deps.json
+C:\NUR\Semestre II\Ingeniería Web I\Proyecto Final\Back End\Avance 4 E-Commerce Videojuegos\bin\Debug\net8.0\Avance 4 E-Commerce Videojuegos.runtimeconfig.json
+C:\NUR\Semestre II\Ingeniería Web I\Proyecto Final\Back End\Avance 4 E-Commerce Videojuegos\bin\Debug\net8.0\Avance 4 E-Commerce Videojuegos.dll
+C:\NUR\Semestre II\Ingeniería Web I\Proyecto Final\Back End\Avance 4 E-Commerce Videojuegos\bin\Debug\net8.0\Avance 4 E-Commerce Videojuegos.pdb
+C:\NUR\Semestre II\Ingeniería Web I\Proyecto Final\Back End\Avance 4 E-Commerce Videojuegos\obj\Debug\net8.0\Avance 4 E-Commerce Videojuegos.dll
+C:\NUR\Semestre II\Ingeniería Web I\Proyecto Final\Back End\Avance 4 E-Commerce Videojuegos\obj\Debug\net8.0\refint\Avance 4 E-Commerce Videojuegos.dll
+C:\NUR\Semestre II\Ingeniería Web I\Proyecto Final\Back End\Avance 4 E-Commerce Videojuegos\obj\Debug\net8.0\Avance 4 E-Commerce Videojuegos.pdb
+C:\NUR\Semestre II\Ingeniería Web I\Proyecto Final\Back End\Avance 4 E-Commerce Videojuegos\obj\Debug\net8.0\Avance 4 E-Commerce Videojuegos.genruntimeconfig.cache
+C:\NUR\Semestre II\Ingeniería Web I\Proyecto Final\Back End\Avance 4 E-Commerce Videojuegos\obj\Debug\net8.0\ref\Avance 4 E-Commerce Videojuegos.dll

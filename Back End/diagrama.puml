@@ -1,0 +1,51 @@
+@startuml diagramaClases
+class Usuario {
+    +int Id
+    +string Nombre
+    +string Correo
+    +string Celular
+    +string Direccion
+    +int Edad
+    -int getId()
+    -void setId(int id)
+}
+
+class Producto {
+    +int Codigo
+    +string Nombre
+    +string TipoProducto
+    +string Plataforma
+    +decimal Precio
+    +bool TieneDescuento
+    +decimal PorcentajeDescuento
+    +string Foto
+    +bool VieneEnCombo
+    +string Descripcion
+    -int getCodigo()
+    -void setCodigo(int codigo)
+    -decimal ObtenerPrecioConDescuento()
+}
+
+class Pedido {
+    +int Id
+    +Usuario Cliente
+    +DateTime FechaPedido
+    +List<DetallePedido> Detalles
+    +decimal PrecioTotal
+    +string Nit
+    -int getId()
+    -void setId(int id)
+    -void AgregarDetalle(Producto producto, int cantidad)
+}
+
+class DetallePedido {
+    +Producto Producto
+    +int Cantidad
+    +decimal PrecioUnitario
+    +decimal Total
+}
+
+Pedido --> Usuario : "Pertenece"
+Pedido *--> DetallePedido : "Contiene"
+DetallePedido --> Producto : "Llama"
+@enduml

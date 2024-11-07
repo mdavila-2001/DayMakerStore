@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Avance 4 E-Commerce Videojuegos/1.0.0": {
+        "runtime": {
+          "Avance 4 E-Commerce Videojuegos.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Avance 4 E-Commerce Videojuegos/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
