@@ -25,12 +25,12 @@ class TipoUsuario(db.Model):
 class Usuario(db.Model):
     __tablename__ = 'Usuario'
     
-    IDUsuario = db.Column(db.CHAR(50), primary_key=True)  # Cambiado a CHAR para coincidir con SQL
+    IDUsuario = db.Column(db.CHAR(50), primary_key=True)
     Nombre = db.Column(db.VARCHAR(100), nullable=False)
     Correo = db.Column(db.VARCHAR(100), nullable=False)
     Celular = db.Column(db.VARCHAR(15))
     Direccion = db.Column(db.VARCHAR(255))
-    TipoUsuarioId = db.Column(db.CHAR(10), db.ForeignKey('TipoUsuario.IDType'))  # Cambiado a CHAR
+    TipoUsuarioId = db.Column(db.CHAR(10), db.ForeignKey('TipoUsuario.IDType')) 
     Edad = db.Column(db.Integer)
 
     # Relación con TipoUsuario
@@ -44,26 +44,31 @@ class Pedido(db.Model):
     NIT = db.Column(db.String(100), nullable=False)
     Total = db.Column(db.Float, nullable=False)
     
+    detalles = db.relationship('DetallePedido', backref='pedido', lazy=True)
+    
     def actualizar_total(self):
         self.Total = sum(detalle.Total for detalle in self.detalles)
         db.session.commit()
 
 class DetallePedido(db.Model):
     __tablename__ = 'DetallePedido'
-    IDDetallePedido = db.Column(db.String(50), primary_key=True)
-    IDPedido = db.Column(db.String(50), db.ForeignKey('Pedido.IDPedido'), nullable=False)
-    codProd = db.Column(db.String(10), db.ForeignKey('Producto.codProd'), nullable=False)
+    
+    IDDetallePedido = db.Column(db.String, primary_key=True)
+    IDPedido = db.Column(db.String, db.ForeignKey('Pedido.IDPedido'))
+    codProd = db.Column(db.String, db.ForeignKey('Producto.codProd'))
     Cantidad = db.Column(db.Integer, nullable=False)
     PrecioUnitario = db.Column(db.Float, nullable=False)
     Total = db.Column(db.Float, nullable=False)
-    producto = db.relationship('Producto', backref='detalles_pedido')
-    pedido = db.relationship('Pedido', backref='detalles')
-    
-    # Métodos para calcular precios
-    def calcular_precio_unitario(self):
-        if self.producto.descuento:
-            return self.producto.precio * (1 - self.producto.porcentajeDescuento / 100)
-        return self.producto.precio
-    
-    def calcular_total(self):
-        return self.PrecioUnitario * self.Cantidad
+
+    # Relación con Producto
+    producto = db.relationship('Producto', backref='detalles')
+
+    def actualizar_precios(self):
+        """Actualiza los precios basados en el producto asociado"""
+        if self.producto:
+            precio_base = self.producto.precio
+            if self.producto.descuento:
+                precio_base = precio_base * (1 - self.producto.porcentajeDescuento / 100)
+            
+            self.PrecioUnitario = precio_base
+            self.Total = self.PrecioUnitario * self.Cantidad

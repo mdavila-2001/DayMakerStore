@@ -30,8 +30,8 @@ class PedidoList(Resource):
             # Verificar que el usuario existe y es un cliente
             usuario = Usuario.query.get_or_404(data['IDUsuario'])
             
-            # Verificar si el usuario es un cliente (TipoUsuarioId = 1)
-            if usuario.TipoUsuarioId != "1":
+            # Verificar si el usuario es un cliente (TipoUsuarioId = TU-0000001)
+            if usuario.TipoUsuarioId != "TU-0000001":
                 api.abort(403, "Error: Solo los clientes pueden crear pedidos. Los administradores no están autorizados para realizar compras.")
             
             nuevo_pedido = Pedido(
@@ -67,7 +67,7 @@ class PedidoItem(Resource):
             # Si se está cambiando el usuario, verificar que el nuevo usuario sea un cliente
             if 'IDUsuario' in data and data['IDUsuario'] != pedido.IDUsuario:
                 nuevo_usuario = Usuario.query.get_or_404(data['IDUsuario'])
-                if nuevo_usuario.TipoUsuarioId != "1":
+                if nuevo_usuario.TipoUsuarioId != "TU-0000001":
                     api.abort(403, "Error: Solo se puede asignar el pedido a usuarios que sean clientes")
             
             for key, value in data.items():

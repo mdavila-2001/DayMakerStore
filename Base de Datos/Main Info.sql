@@ -1,6 +1,7 @@
-create database ProyectoFinal;
+create database Final_ECommerce;
 
-USE ProyectoFinal;
+
+USE Final_ECommerce;
 
 create table TipoUsuario(
 	IDType char(10) NOT NULL,
@@ -8,8 +9,8 @@ create table TipoUsuario(
 	CONSTRAINT PK_TipoUsuario PRIMARY KEY (IDType)
 );
 
-insert into TipoUsuario values (1, 'Cliente');
-insert into TipoUsuario values (2, 'Administrador');
+insert into TipoUsuario values ('TU-0000001', 'Cliente');
+insert into TipoUsuario values ('TU-0000002', 'Administrador');
 
 select * from TipoUsuario;
 

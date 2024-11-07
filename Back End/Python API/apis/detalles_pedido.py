@@ -19,7 +19,7 @@ class DetallePedidoList(Resource):
     @api.doc('Listar todos los detalles de pedido')
     @api.marshal_list_with(detalle_pedido_model)
     def get(self):
-        """Obtener lista de todos los detalles de pedido"""
+       #Obtener lista de todos los detalles de pedido
         try:
             detalles = DetallePedido.query.all()
             return detalles
@@ -30,7 +30,7 @@ class DetallePedidoList(Resource):
     @api.expect(detalle_pedido_model)
     @api.marshal_with(detalle_pedido_model, code=201)
     def post(self):
-        """Crear un nuevo detalle de pedido"""
+        #Crear un nuevo detalle de pedido
         try:
             data = request.json
             
@@ -38,22 +38,34 @@ class DetallePedidoList(Resource):
             producto = Producto.query.get_or_404(data['codProd'])
             pedido = Pedido.query.get_or_404(data['IDPedido'])
             
+            # Calcular el precio unitario basado en el producto
+            precio_unitario = producto.precio
+            if producto.descuento:
+                precio_unitario = precio_unitario * (1 - producto.porcentajeDescuento / 100)
+            
+            # Calcular el total
+            cantidad = data['Cantidad']
+            total = precio_unitario * cantidad
+            
+            # Crear el nuevo detalle con los precios ya calculados
             nuevo_detalle = DetallePedido(
                 IDDetallePedido=data['IDDetallePedido'],
                 IDPedido=data['IDPedido'],
                 codProd=data['codProd'],
-                Cantidad=data['Cantidad'],
-                PrecioUnitario=producto.precio,  # Usar el precio del producto
-                Total=producto.precio * data['Cantidad']  # Calcular el total
+                Cantidad=cantidad,
+                PrecioUnitario=precio_unitario,
+                Total=total
             )
             
             db.session.add(nuevo_detalle)
             db.session.commit()
 
-            # Actualizar el total del pedido sumando todos los detalles
+            # Actualizar el total del pedido
             pedido.actualizar_total()
+            db.session.commit()
 
             return nuevo_detalle, 201
+            
         except SQLAlchemyError as e:
             db.session.rollback()
             api.abort(500, f"Error de base de datos: {str(e)}")
@@ -65,7 +77,7 @@ class DetallePedidoItem(Resource):
     @api.doc('Obtener un detalle de pedido')
     @api.marshal_with(detalle_pedido_model)
     def get(self, id):
-        """Obtener un detalle de pedido por su ID"""
+        #Obtener un detalle de pedido por su ID
         try:
             detalle = DetallePedido.query.get_or_404(id)
             return detalle
@@ -76,22 +88,19 @@ class DetallePedidoItem(Resource):
     @api.expect(detalle_pedido_model)
     @api.marshal_with(detalle_pedido_model)
     def put(self, id):
-        """Actualizar un detalle de pedido existente"""
+        #Actualizar un detalle de pedido existente
         try:
             detalle = DetallePedido.query.get_or_404(id)
             data = request.json
             
             # Actualizar campos
             if 'codProd' in data:
-                producto = Producto.query.get_or_404(data['codProd'])
                 detalle.codProd = data['codProd']
-                detalle.PrecioUnitario = producto.precio
-
             if 'Cantidad' in data:
                 detalle.Cantidad = data['Cantidad']
             
-            # Recalcular el total
-            detalle.Total = detalle.PrecioUnitario * detalle.Cantidad
+            # Recalcular precios
+            detalle.actualizar_precios()
             
             db.session.commit()
 
@@ -107,7 +116,7 @@ class DetallePedidoItem(Resource):
     @api.doc('Eliminar un detalle de pedido')
     @api.response(204, 'Detalle de pedido eliminado')
     def delete(self, id):
-        """Eliminar un detalle de pedido"""
+        #Eliminar un detalle de pedido
         try:
             detalle = DetallePedido.query.get_or_404(id)
             id_pedido = detalle.IDPedido  # Guardar el ID del pedido antes de eliminar el detalle
@@ -130,7 +139,7 @@ class DetallesPorPedido(Resource):
     @api.doc('Listar detalles por pedido')
     @api.marshal_list_with(detalle_pedido_model)
     def get(self, id_pedido):
-        """Obtener detalles de un pedido específico"""
+        #Obtener detalles de un pedido específico
         try:
             detalles = DetallePedido.query.filter_by(IDPedido=id_pedido).all()
             return detalles
