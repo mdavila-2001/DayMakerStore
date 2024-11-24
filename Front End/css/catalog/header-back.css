@@ -5,7 +5,6 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 0;
-    padding: 20px;
     background-color: #0c192c;
 }
 
@@ -21,7 +20,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1%;
     background-color: #6588b33c;
     color: #fff;
     width: 100%;
@@ -31,7 +29,6 @@ body {
 .appbar .titulo {
     font-size: 18px;
     font-weight: bold;
-    margin-left: 3%;
 }
 
 .appbar .acciones {
@@ -50,22 +47,106 @@ body {
     justify-content: space-between;
 }
 
+.appbar .acciones button .usuario-icono {
+    /* display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 40%; */
+    display: none;
+}
+
+.appbar .acciones button .fas {
+    display: none;
+}
+
 .appbar .acciones button:hover {
     background-color: #6588b37f;
+}
+
+/* Estilos para el menú hamburguesa */
+.menu-hamburguesa {
+    display: block;
+    background: transparent;
+    border: none;
+    color: #fff; /* Color del ícono */
+    font-size: 24px; /* Tamaño del ícono */
+    cursor: pointer;
+}
+
+.menu-desplegable {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #6588b3;
+    border-radius: 5px;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 3%;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-desplegable.show {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.cerrar-menu {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.cerrar-menu i {
+    color: #fff; 
+    font-size: 24px;
+}
+
+.menu-desplegable img.usuario-icono {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 10px;
+    align-self: center;
+}
+
+.menu-desplegable label {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.menu-desplegable label:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Media query para tabletas (min-width: 768px y max-width: 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
     .main-container {
-        padding: 4%; /* Ajustar el padding para tabletas */
+        padding: 4%;
     }
 
     .appbar .titulo {
         font-size: 26px;
+        text-align: center;
     }
 
     .appbar .acciones button {
         font-size: 21px;
+    }
+    .menu-hamburguesa {
+        display: block;
+    }
+
+    .menu-desplegable {
+        display: block;
     }
 }
 
@@ -77,13 +158,57 @@ body {
 
     .appbar{
         margin: 0 5%;
+        display: flex;
+        justify-content: space-between;
     }
 
     .appbar .titulo {
         font-size: 24px;
+        margin-left: 1%;
+        text-align: left;
+        flex-grow: 1;
+    }
+
+    .appbar .acciones {
+        display: flex;
+        gap: 1%;
+        margin-right: 2%;
     }
 
     .appbar .acciones button {
-        font-size: 22px; /* Aumentar el tamaño de los botones */
+        font-size: 22px;
+    }
+    .usuario-icono {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    
+    .acciones button {
+        background-color: transparent;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        display: block;
+    }
+
+    .appbar .acciones button .usuario-icono {
+        display: block;
+    }
+    
+    .appbar .acciones button .fas {
+        display: block;
+    }
+    
+    .acciones button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    .menu-hamburguesa {
+        display: none;
+    }
+
+    .menu-desplegable {
+        display: none;
     }
 }
