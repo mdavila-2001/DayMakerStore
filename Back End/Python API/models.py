@@ -6,31 +6,35 @@ db = SQLAlchemy()
 class Producto(db.Model):
     __tablename__ = 'Producto'
     
-    codProd = db.Column(db.String(10), primary_key=True)
-    nombreProd = db.Column(db.String(200), nullable=False)
-    tipoProducto = db.Column(db.String(100), nullable=False)
-    plataforma = db.Column(db.String(100), nullable=False)
+    codProd = db.Column(db.String, primary_key=True)
+    nombreProd = db.Column(db.String, nullable=False)
+    tipoProducto = db.Column(db.String, nullable=False)
+    plataforma = db.Column(db.String, nullable=False)
     precio = db.Column(db.Float, nullable=False)
     descuento = db.Column(db.Boolean, nullable=False)
     porcentajeDescuento = db.Column(db.Integer)
-    foto = db.Column(db.String(2048))
+    foto = db.Column(db.String)
     combo = db.Column(db.Boolean, nullable=False)
     descProd = db.Column(db.Text)
+    hayStock = db.Column(db.Boolean, nullable=False, default=True)
+    stock = db.Column(db.Integer, nullable=False, default=0)
 
 class TipoUsuario(db.Model):
     __tablename__ = 'TipoUsuario'
-    IDType = db.Column(db.String(10), primary_key=True)
-    Tipo = db.Column(db.String(200), nullable=False)
+    IDType = db.Column(db.String, primary_key=True)
+    Tipo = db.Column(db.String, nullable=False)
 
 class Usuario(db.Model):
     __tablename__ = 'Usuario'
     
-    IDUsuario = db.Column(db.CHAR(50), primary_key=True)
-    Nombre = db.Column(db.VARCHAR(100), nullable=False)
-    Correo = db.Column(db.VARCHAR(100), nullable=False)
-    Celular = db.Column(db.VARCHAR(15))
-    Direccion = db.Column(db.VARCHAR(255))
-    TipoUsuarioId = db.Column(db.CHAR(10), db.ForeignKey('TipoUsuario.IDType')) 
+    IDUsuario = db.Column(db.CHAR, primary_key=True)
+    Nombre = db.Column(db.VARCHAR, nullable=False)
+    Correo = db.Column(db.VARCHAR, nullable=False)
+    NombreUsuario = db.Column(db.VARCHAR, nullable=False)
+    Contraseña = db.Column(db.VARCHAR, nullable=False)
+    Celular = db.Column(db.VARCHAR)
+    Direccion = db.Column(db.VARCHAR)
+    TipoUsuarioId = db.Column(db.CHAR, db.ForeignKey('TipoUsuario.IDType')) 
     Edad = db.Column(db.Integer)
 
     # Relación con TipoUsuario
@@ -38,10 +42,10 @@ class Usuario(db.Model):
 
 class Pedido(db.Model):
     __tablename__ = 'Pedido'
-    IDPedido = db.Column(db.String(50), primary_key=True)
-    IDUsuario = db.Column(db.String(50), db.ForeignKey('Usuario.IDUsuario'), nullable=False)
+    IDPedido = db.Column(db.String, primary_key=True)
+    IDUsuario = db.Column(db.String, db.ForeignKey('Usuario.IDUsuario'), nullable=False)
     FechaPedido = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    NIT = db.Column(db.String(100), nullable=False)
+    NIT = db.Column(db.String, nullable=False)
     Total = db.Column(db.Float, nullable=False)
     
     detalles = db.relationship('DetallePedido', backref='pedido', lazy=True)

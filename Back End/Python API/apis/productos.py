@@ -15,7 +15,9 @@ producto_model = api.model('Producto', {
     'porcentajeDescuento': fields.Integer(description='Porcentaje de descuento'),
     'foto': fields.String(description='URL de la foto'),
     'combo': fields.Boolean(required=True, description='¿Es combo?'),
-    'descProd': fields.String(description='Descripción del producto')
+    'descProd': fields.String(description='Descripción del producto'),
+    'hayStock': fields.Boolean(required=True, description='¿Hay stock?'),  # Nuevo campo
+    'stock': fields.Integer(required=True, description='Cantidad en stock')  # Nuevo campo
 })
 
 @api.route('/')

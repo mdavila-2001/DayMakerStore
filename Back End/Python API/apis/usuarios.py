@@ -8,8 +8,10 @@ api = Namespace('usuarios', description='Operaciones de usuarios')
 # Modelo para la documentación de la API
 usuario_model = api.model('Usuario', {
     'IDUsuario': fields.String(required=True, description='ID del usuario'),
-    'Nombre': fields.String(required=False, description='Nombre del usuario'),
+    'Nombre': fields.String(required=False, description='Nombre legal del usuario'),
     'Correo': fields.String(required=False, description='Correo del usuario'),
+    'NombreUsuario': fields.String(required=False, description='Nombre de usuario'),
+    'Contraseña': fields.String(required=False, description='Contraseña del usuario'),
     'Celular': fields.String(required=False, description='Número de celular'),
     'Direccion': fields.String(required=False, description='Dirección'),
     'TipoUsuarioId': fields.String(required=False, description='ID del tipo de usuario'),
@@ -40,9 +42,11 @@ class UsuarioList(Resource):
             tipo_usuario_id = str(data.get('TipoUsuarioId')) if data.get('TipoUsuarioId') is not None else None
             
             nuevo_usuario = Usuario(
-                IDUsuario=str(data['IDUsuario']),  # Asegurarse de que sea string
+                IDUsuario=str(data['IDUsuario']),
                 Nombre=str(data['Nombre']),
                 Correo=str(data['Correo']),
+                NombreUsuario=str(data['NombreUsuario']),
+                Contraseña=str(data['Contraseña']),
                 Celular=str(data.get('Celular')) if data.get('Celular') else None,
                 Direccion=str(data.get('Direccion')) if data.get('Direccion') else None,
                 TipoUsuarioId=tipo_usuario_id,
