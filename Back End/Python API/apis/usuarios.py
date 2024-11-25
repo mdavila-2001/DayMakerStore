@@ -1,3 +1,4 @@
+import jwt
 from flask_restx import Namespace, Resource, fields
 from flask import request
 from models import db, Usuario
@@ -10,8 +11,8 @@ usuario_model = api.model('Usuario', {
     'IDUsuario': fields.String(required=True, description='ID del usuario'),
     'Nombre': fields.String(required=False, description='Nombre legal del usuario'),
     'Correo': fields.String(required=False, description='Correo del usuario'),
-    'NombreUsuario': fields.String(required=False, description='Nombre de usuario'),
     'Contraseña': fields.String(required=False, description='Contraseña del usuario'),
+    'fotoPerfil': fields.String(required=False, description='URL de la foto de perfil del Usuario'),
     'Celular': fields.String(required=False, description='Número de celular'),
     'Direccion': fields.String(required=False, description='Dirección'),
     'TipoUsuarioId': fields.String(required=False, description='ID del tipo de usuario'),
@@ -45,8 +46,8 @@ class UsuarioList(Resource):
                 IDUsuario=str(data['IDUsuario']),
                 Nombre=str(data['Nombre']),
                 Correo=str(data['Correo']),
-                NombreUsuario=str(data['NombreUsuario']),
                 Contraseña=str(data['Contraseña']),
+                fotoPerfil = str(data.get('fotoPerfil')) if data.get('fotoPerfil') else None,
                 Celular=str(data.get('Celular')) if data.get('Celular') else None,
                 Direccion=str(data.get('Direccion')) if data.get('Direccion') else None,
                 TipoUsuarioId=tipo_usuario_id,
@@ -123,5 +124,22 @@ class UsuariosPorTipo(Resource):
         """Obtener usuarios por tipo"""
         try:
             return Usuario.query.filter_by(TipoUsuarioId=tipo_id).all()
+        except SQLAlchemyError as e:
+            api.abort(500, f"Error de base de datos: {str(e)}")
+
+@api.route('/login/')
+class Login(Resource):
+    @api.expect(usuario_model)
+    def post(self):
+        """Iniciar sesión de un usuario"""
+        data = request.json
+        try:
+            usuario = Usuario.query.filter_by(IDUsuario=data['IDUsuario']).first()
+
+            if usuario and usuario.Contraseña == data['Contraseña']:  # Comparación directa
+                token = jwt.encode({'user_id': usuario.IDUsuario}, '704d20c9fb414a9b9fd584df9d2eebb6', algorithm='HS256')  # Usa una clave secreta
+                return {'token': token}, 200
+            else:
+                return {'message': 'Credenciales inválidas'}, 401
         except SQLAlchemyError as e:
             api.abort(500, f"Error de base de datos: {str(e)}")

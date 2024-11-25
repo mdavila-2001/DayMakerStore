@@ -110,3 +110,16 @@ body {
     text-decoration: underline;
     cursor: pointer;
 }
+
+.input-group {
+    position: relative; /* Para posicionar el ícono */
+}
+
+.eye-icon {
+    position: absolute;
+    right: 10px; /* Ajusta según sea necesario */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    color: #3e5c66; /* Color del ícono */
+}

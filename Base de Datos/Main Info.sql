@@ -19,20 +19,21 @@ CREATE TABLE Usuario (
     IDUsuario CHAR(50) NOT NULL,
     Nombre VARCHAR(100) NOT NULL,
     Correo VARCHAR(100) NOT NULL,
-    NombreUsuario VARCHAR(100) NOT NULL,
     Contraseña VARCHAR(100) NOT NULL,
+	fotoPerfil VARCHAR(MAX) NOT NULL,
     Celular VARCHAR(15),
-	fotoPerfil VARCHAR(2048),
     Direccion VARCHAR(255),
     TipoUsuarioId char(10),
     Edad INT,
-    CONSTRAINT PK_Usuario PRIMARY KEY (IDUsuario),
+    CONSTRAINT PK_IDUsuario PRIMARY KEY (IDUsuario),
     CONSTRAINT FK_Usuario_TipoUsuario FOREIGN KEY (TipoUsuarioId) REFERENCES TipoUsuario(IDType)
 );
 
 drop table Usuario;
 
 select * from Usuario;
+
+delete from Usuario;
 
 CREATE TABLE Producto (
     codProd CHAR(10) NOT NULL,
@@ -60,23 +61,21 @@ INSERT INTO Producto (codProd, nombreProd, tipoProducto, plataforma, precio, des
 ('P005', 'Xbox Series X', 'Consola', 'Xbox Series X', 499.99, 0, 0, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYFRrbQ9WDJ6hiIreMaoOfVVLfR6gzKlr5bw&s', 1, 'La Xbox Series X es la consola más potente de Microsoft, diseñada para ofrecer un rendimiento excepcional y gráficos de última generación. Con una amplia gama de juegos y compatibilidad con versiones anteriores, es la elección perfecta para los jugadores serios.', 1, 10),
 ('P006', 'Nintendo Switch OLED', 'Consola', 'Nintendo Switch', 349.99, 0, 0, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwxybOfMl4LXIEXkNqR8efIfjmTTHlGCRDrw&s', 1, 'La Nintendo Switch OLED es una versión mejorada de la popular consola híbrida, ofreciendo una pantalla más grande y vibrante. Con la capacidad de jugar en casa o en movimiento, es ideal para los amantes de los juegos de Nintendo.', 1, 12),
 ('P007', 'Elden Ring', 'Videojuego', 'PC', 59.99, 1, 10, 'https://image.api.playstation.com/vulcan/ap/rnd/202110/2000/phvVT0qZfcRms5qDAk0SI3CM.png', 0, 'Elden Ring es un emocionante videoj uego de rol de acción que te lleva a un mundo de fantasía. Con una historia profunda y un mundo abierto lleno de misiones y desafíos, es un juego que te mantendrá enganchado durante horas.', 1, 18),
-('P008', 'Animal Crossing: New Horizons', 'Videojuego', 'Nintendo Switch', 59.99, 0 , 0, 'https://assets.nintendo.com/image/upload/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000027619/9989957eae3a6b545194c42fec2071675c34aadacd65e6b33fdfe7b3b6a86c3a', 0, 'Animal Crossing: New Horizons es un encantador simulador de vida donde los jugadores pueden construir y personalizar su propia isla. Con gráficos adorables y una jugabilidad relajante, es perfecto para aquellos que buscan escapar a un mundo tranquilo.', 1, 22),
-('P009', 'FIFA 22', 'Videojuego', 'PlayStation 5', 59.99, 1, 5, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXC_tOhviIkQu1O-QKs1SO7eNbPyjdJG41xA&s', 0, 'FIFA 22 ofrece la experiencia de fútbol más realista con gráficos impresionantes y jugabilidad mejorada. Con modos de juego variados y una amplia selección de equipos, es un must para los fanáticos del fútbol.', 1, 40),
-('P010', 'Call of Duty: Vanguard', 'Videojuego', 'PC', 59.99, 0, 0, 'https://image.api.playstation.com/vulcan/img/rnd/202109/2219/VEUQKdYCrYShnNIzOYIGepwj.png', 0, 'Call of Duty: Vanguard lleva a los jugadores a la Segunda Guerra Mundial con una narrativa intensa y modos multijugador emocionantes. Con gráficos de última generación, es un título imprescindible para los amantes de los shooters.', 1, 35),
+('P008', 'Animal Crossing: New Horizons', 'Videojuego', 'Nintendo Switch', 59.99, 0 , 0, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGwHZ1Hx2OngIsHaHzMFsD9inNHzAUrYkXHQ&s', 0, 'Animal Crossing: New Horizons es un encantador simulador de vida donde los jugadores pueden construir y personalizar su propia isla. Con gráficos adorables y una jugabilidad relajante, es perfecto para aquellos que buscan escapar a un mundo tranquilo.', 1, 22),
+('P009', 'FIFA 22', 'Videojuego', 'PlayStation 4', 59.99, 1, 5, 'https://cdn.akamai.steamstatic.com/steam/apps/1506830/capsule_616x353.jpg?t\u003d1695934909', 0, 'FIFA 22 ofrece la experiencia de fútbol más realista con gráficos impresionantes y jugabilidad mejorada. Con modos de juego variados y una amplia selección de equipos, es un must para los fanáticos del fútbol.', 1, 40),
+('P010', 'Call of Duty: Vanguard', 'Videojuego', 'PC', 59.99, 0, 0, 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR6AKJ9KDor8Cll9nPL5ia7IMLj3fArHYO_vRRdwIptYVoCAGe9QSYvJXODTP_TSDkdgD9dgKD2ZX7LKOz_dursMf5rTaYc8W8URlhFu5k', 0, 'Call of Duty: Vanguard lleva a los jugadores a la Segunda Guerra Mundial con una narrativa intensa y modos multijugador emocionantes. Con gráficos de última generación, es un título imprescindible para los amantes de los shooters.', 1, 35),
 ('P011', 'Razer BlackWidow Lite', 'Accesorio', 'Computadoras', 99.99, 0, 0, 'https://cellplay.com.ar/img/Public/producto-95890398-0.jpg', 0, 'El Razer BlackWidow Lite es un teclado gaming de alta calidad que ofrece una velocidad y precisión excepcionales. Con una iluminación personalizable y botones táctiles, es perfecto para los gamers que buscan mejorar su experiencia de juego.', 1, 23),
 ('P012', 'Corsair Vengeance LPX 16GB', 'Componente', 'Computadoras', 69.99, 1, 15, 'https://m.media-amazon.com/images/I/61wCOVcyvFL._AC_UF894,1000_QL80_.jpg', 0, 'La memoria RAM Corsair Vengeance LPX 16GB es una excelente opción para mejorar el rendimiento de tu computadora. Con una velocidad de 3200MHz y una capacidad de 16GB, es perfecta para los usuarios que requieren un rendimiento óptimo.', 1, 15),
-('P013', 'Western Digital Black SN750', 'Componente', 'Computadoras', 129.99, 0,  0, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZUfPYXqR4_1x-14vRqd3IwZZeHcL9ulAOPA&s', 0, 'El Western Digital Black SN750 es un disco duro de alta velocidad que ofrece un rendimiento excepcional y una capacidad de almacenamiento de hasta 1TB. Ideal para los usuarios que requieren un almacenamiento rápido y seguro.', 1, 18),
-('P014', 'HyperX Cloud II', 'Accesorio', 'Computadoras', 99.99, 1, 10, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2o4OpzQW8vEE5EiluaDgChlhdK2FcDkKKBQ&s', 0, 'El HyperX Cloud II es un auricular gaming de alta calidad que ofrece un sonido excepcional y una comodidad óptima. Con una conexión inalámbrica y un micrófono de alta calidad, es perfecto para los gamers que buscan mejorar su experiencia de juego.', 1, 19),
-('P015', 'AMD Ryzen 5 5600X', 'Componente', 'Computadoras', 299.99, 0, 0, 'https://www.amd.com/content/dam/amd/en/images/products/processors/ryzen/2505503-ryzen-5-5600x.jpg', 0, 'El AMD Ryzen 5 5600X es un procesador de alta gama que ofrece un rendimiento excepcional y una eficiencia energética óptima. Ideal para los usuarios que requieren un rendimiento óptimo para juegos y aplicaciones intensivas.', 1, 8),
-('P016', 'ASUS PRIME B550-PLUS', 'Componente', 'Computadoras', 129.99, 1, 10, 'https://dlcdnimgs.asus.com/websites/global/products/dcjcvlecuj539q9g/img/intro-main.png', 0, 'La placa base ASUS PRIME B550-PLUS es una excelente opción para construir una computadora gaming. Con características innovadoras y una calidad de construcción óptima, es perfecta para los usuarios que buscan un rendimiento óptimo.', 1, 19),
-('P017', 'Corsair Hydro Series H115i RGB Platinum', 'Componente', 'Computadoras', 139.99, 0, 0, 'https://m.media-amazon.com/images/I/61bLmUADgoS._AC_UF894,1000_QL80_.jpg', 0, 'El Corsair Hydro Series H115i RGB Platinum es un sistema de refrigeración líquida de alta calidad que ofrece un rendimiento excepcional y una iluminación personalizable. Ideal para los usuarios que requieren un rendimiento óptimo y una temperatura óptima.', 1, 55),
+('P013', 'Western Digital Black SN750', 'Componente', 'Computadoras', 129.99, 0,  0, 'https://www.westerndigital.com/content/dam/store/en-us/assets/products/internal-storage/wd-black-sn750-se-nvme-ssd/gallery/wd-black-sn750-se-nvme-ssd-face-right.png', 0, 'El Western Digital Black SN750 es un disco duro de alta velocidad que ofrece un rendimiento excepcional y una capacidad de almacenamiento de hasta 1TB. Ideal para los usuarios que requieren un almacenamiento rápido y seguro.', 1, 18),
+('P014', 'HyperX Cloud II', 'Accesorio', 'Computadoras', 99.99, 1, 10, 'https://hyperx.com/cdn/shop/files/hyperx_cloud_ii_wireless_1_main_grande.jpg?v=1730148029', 0, 'El HyperX Cloud II es un auricular gaming de alta calidad que ofrece un sonido excepcional y una comodidad óptima. Con una conexión inalámbrica y un micrófono de alta calidad, es perfecto para los gamers que buscan mejorar su experiencia de juego.', 1, 19),
+('P015', 'AMD Ryzen 5 5600X', 'Componente', 'Computadoras', 299.99, 0, 0, 'https://www.invidcomputers.com/images/000000000041306882104413068.png', 0, 'El AMD Ryzen 5 5600X es un procesador de alta gama que ofrece un rendimiento excepcional y una eficiencia energética óptima. Ideal para los usuarios que requieren un rendimiento óptimo para juegos y aplicaciones intensivas.', 1, 8),
+('P016', 'ASUS PRIME B550-PLUS', 'Componente', 'Computadoras', 129.99, 1, 10, 'https://dlcdnwebimgs.asus.com/gain/19fbc492-a8a6-4922-a47a-486c99d49794/w800', 0, 'La placa base ASUS PRIME B550-PLUS es una excelente opción para construir una computadora gaming. Con características innovadoras y una calidad de construcción óptima, es perfecta para los usuarios que buscan un rendimiento óptimo.', 1, 19),
+('P017', 'Corsair Hydro Series H115i RGB Platinum', 'Componente', 'Computadoras', 139.99, 0, 0, 'https://www.corsair.com/wp-content/uploads/2022/01/Press_11-01-18_01.png', 0, 'El Corsair Hydro Series H115i RGB Platinum es un sistema de refrigeración líquida de alta calidad que ofrece un rendimiento excepcional y una iluminación personalizable. Ideal para los usuarios que requieren un rendimiento óptimo y una temperatura óptima.', 1, 55),
 ('P018', 'Samsung Odyssey G9', 'Monitor', 'Computadoras', 999.99, 0, 0, 'https://i.ebayimg.com/images/g/MZAAAOSwyJphH9MT/s-l500.webp', 0, 'El Samsung Odyssey G9 es un monitor gaming de alta gama que ofrece un rendimiento gráfico excepcional y una pantalla curva de 49 pulgadas. Con una frecuencia de refresco de 240Hz y una respuesta de 1ms, es perfecto para los gamers que buscan una experiencia de juego inmersiva.', 1, 13),
-('P019', 'Razer Raptor 27', 'Monitor', 'Computadoras', 699.99, 1, 10, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXoQZTGS9g6s_3MwKpUSWI009ou4E-qYJuTA&s', 0, 'El Razer Raptor 27 es un monitor gaming de alta calidad que ofrece un rendimiento gráfico excepcional y una pantalla de 27 pulgadas. Con una frecuencia de refresco de 165Hz y una respuesta de 1ms, es perfecto para los gamers que buscan una experiencia de juego rápida y fluida.', 1, 1),
+('P019', 'Razer Raptor 27', 'Monitor', 'Computadoras', 699.99, 1, 10, 'https://dl.razerzone.com/src/5390-1-EN-v2.png', 0, 'El Razer Raptor 27 es un monitor gaming de alta calidad que ofrece un rendimiento gráfico excepcional y una pantalla de 27 pulgadas. Con una frecuencia de refresco de 165Hz y una respuesta de 1ms, es perfecto para los gamers que buscan una experiencia de juego rápida y fluida.', 1, 1),
 ('P020', 'Corsair Obsidian Series 7700', 'Componente', 'Computadoras', 299.99, 1, 10, 'https://assets.corsair.com/image/upload/f_auto,q_auto/content/cc-9011148-ww-1000d-hero.png', 0, 'El Corsair Obsidian Series 7700 es un gabinete de alta calidad que ofrece un diseño atractivo y una construcción robusta. Con características innovadoras y una capacidad de expansión óptima, es perfecto para los usuarios que buscan un gabinete que combine estilo y funcionalidad.', 1, 10);
 
 select * from Producto;
-
-delete from Producto;
 
 CREATE TABLE Pedido (
     IDPedido CHAR(50) NOT NULL,
@@ -89,6 +88,7 @@ CREATE TABLE Pedido (
 );
 
 select * from Pedido;
+drop table Pedido;
 
 CREATE TABLE DetallePedido (
     IDDetallePedido CHAR(50) NOT NULL,
@@ -103,5 +103,7 @@ CREATE TABLE DetallePedido (
 );
 
 select * from DetallePedido;
+
+drop table DetallePedido;
 
 SELECT @@SERVERNAME

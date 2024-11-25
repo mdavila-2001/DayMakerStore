@@ -20,6 +20,7 @@ api = Api(
     version='1.0',
     title='Prueba de API Backend',
     description='API REST para gestionar productos, usuarios y pedidos',
+    doc='/docs'
 )
 
 api.add_namespace(usuarios_ns)
