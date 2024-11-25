@@ -1,214 +1,122 @@
-/* Estilos generales y fondo */
-body {
-    font-family: Arial, sans-serif;
+.catalogo {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    background-color: #0c192c;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px; /* Limitar el ancho del catálogo */
 }
 
-.main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3%;
+/* Estilos por defecto para móviles */
+.producto {
+    border: 1% solid #ccc;
+    padding: 0.5%; /* Reducido para móviles */
+    margin: 1%;
+    border-radius: 5%;
+    width: 48%;
+    text-align: left;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para el encabezado */
-.appbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #6588b33c;
-    color: #fff;
+.producto img {
     width: 100%;
+    height: 150px;
+    object-fit: contain;
     border-radius: 5px;
 }
 
-.appbar .titulo {
-    font-size: 18px;
+.producto a {
+    color: black;
     font-weight: bold;
+    text-decoration: none;
+    display: block;
+    font-size: 14px; /* Reducido tamaño de fuente */
 }
 
-.appbar .acciones {
+.producto a:hover{
+    text-decoration: underline;
+}
+
+.precio-original {
+    text-decoration: line-through;
+    color: red;
+    font-size: 12px;
+}
+
+.precio {
+    font-size: 12px; /* Reducido tamaño de fuente */
+}
+
+.plataforma {
+    font-size: 12px; /* Reducido tamaño de fuente */
+}
+
+.contenedor-botones {
     display: flex;
     justify-content: space-between;
+}
+
+.contador {
+    display: inline-flex;
     align-items: center;
+    margin: 5px 0; /* Reducido para móviles */
 }
 
-.appbar .acciones button {
-    background-color: transparent;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    color: #fff; /* Color del ícono */
-    font-size: 20px;
-    justify-content: space-between;
+.contador button {
+    width: 20px;
+    height: 20px;
 }
 
-.appbar .acciones button .usuario-icono {
-    /* display: block;
-    width: 30px;
-    height: 30px;
-    border-radius: 40%; */
-    display: none;
-}
-
-.appbar .acciones button .fas {
-    display: none;
-}
-
-.appbar .acciones button:hover {
-    background-color: #6588b37f;
-}
-
-/* Estilos para el menú hamburguesa */
-.menu-hamburguesa {
-    display: block;
-    background: transparent;
-    border: none;
-    color: #fff; /* Color del ícono */
-    font-size: 24px; /* Tamaño del ícono */
-    cursor: pointer;
-}
-
-.menu-desplegable {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    background-color: #6588b3;
-    border-radius: 5px;
-    z-index: 1000;
-    overflow-y: auto;
-    padding: 3%;
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.menu-desplegable.show {
-    display: block;
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.cerrar-menu {
-    display: flex;
-    justify-content: flex-start;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.cerrar-menu i {
-    color: #fff; 
-    font-size: 24px;
-}
-
-.menu-desplegable img.usuario-icono {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 10px;
-    align-self: center;
-}
-
-.menu-desplegable label {
-    display: block;
-    padding: 10px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.menu-desplegable label:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Media query para tabletas (min-width: 768px y max-width: 991px) */
+/* Media query para tabletas */
 @media (min-width: 768px) and (max-width: 991px) {
-    .main-container {
-        padding: 4%;
+    .producto {
+        width: 30%; /* 3 tarjetas por fila para tabletas */
     }
 
-    .appbar .titulo {
-        font-size: 26px;
-        text-align: center;
+    .producto img {
+        height: 200px; /* Ajustar la altura de las imágenes para tabletas */
     }
 
-    .appbar .acciones button {
-        font-size: 21px;
-    }
-    .menu-hamburguesa {
-        display: block;
-    }
-
-    .menu-desplegable {
-        display: block;
+    .contador button {
+        width: 30px; /* Ancho ajustado para tabletas */
+        height: 30px; /* Alto ajustado para tabletas */
     }
 }
 
-/* Media query para pantallas de 992px o más (PC) */
+/* Media query para pantallas más grandes (opcional) */
 @media (min-width: 992px) {
-    .main-container {
-        padding: 5%;
+    .producto {
+        width: 21%; /* 4 tarjetas por fila para pantallas grandes */
     }
+}
 
-    .appbar{
-        margin: 0 5%;
-        display: flex;
-        justify-content: space-between;
-    }
+/* Estilos para los botones (sin cambios) */
+#comprar {
+    background-color: green; /* Color de fondo verde */
+}
 
-    .appbar .titulo {
-        font-size: 24px;
-        margin-left: 1%;
-        text-align: left;
-        flex-grow: 1;
-    }
+#carrito {
+    background-color: rgb(145, 189, 173); /* Color de fondo verde */
+}
 
-    .appbar .acciones {
-        display: flex;
-        gap: 1%;
-        margin-right: 2%;
-    }
+.contenedor-botones button {
+    padding: 5px 10px; /* Reducido padding para móviles */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #47a99e;
+    cursor: pointer;
+    font-size: 12px; /* Reducido tamaño de fuente */
+}
 
-    .appbar .acciones button {
-        font-size: 22px;
-    }
-    .usuario-icono {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        cursor: pointer;
-    }
-    
-    .acciones button {
-        background-color: transparent;
-        border: none;
-        padding: 10px;
-        cursor: pointer;
-        display: block;
-    }
+.contenedor-botones button:hover {
+    background-color: #3e8e41;
+}
 
-    .appbar .acciones button .usuario-icono {
-        display: block;
-    }
-    
-    .appbar .acciones button .fas {
-        display: block;
-    }
-    
-    .acciones button:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }
-    .menu-hamburguesa {
-        display: none;
-    }
+/* Estilos para el contador */
+.contador button:last-child {
+    background-color: #f44336; /* Color rojo para el botón de basura */
+}
 
-    .menu-desplegable {
-        display: none;
-    }
+.contador button:last-child:hover {
+    background-color: #d32f2f; /* Color al pasar el mouse para el botón de basura */
 }
