@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador</title>
+    <link rel="stylesheet" href="../static/css/admin/appbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header class="appbar">
+        <div class="menu-lateral">
+            <button class="menu-hamburguesa" onclick="toggleMenu()">&#9776;</button>
+        </div>
+        <h2 class="titulo" id="header-title">
+            Información General
+        </h2>
+        <div class="acciones">
+            <button>
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+            <button onclick="window.location.href='catalog.html'" style="margin-left: 10px;">
+                <i class="fas fa-home"></i>
+            </button>
+            <img src="../static/img/admin.png" alt="Usuario" class="usuario-icono">
+            <button onclick="window.location.href='index.html'">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+        <div class="menu-desplegable" id="menuDesplegable">
+            <div class="cerrar-menu" onclick="cerrarMenu()">
+                <i class="fas fa-times"></i>
+            </div>
+            <img id="usuario-foto" src="../static/img/admin.png" alt="Foto de Usuario" class="usuario-icono">
+            <label id="usuario-nombre">Invitado</label>
+            <label class="carrito">Ver Carrito de Compras</label>
+            <label class="logout" onclick="window.location.href='index.html'">Cerrar Sesión</label>
+        </div>
+    </header>
+    
+    <main>
+        <section id="user-management">
+            <h3>Gestión de Usuarios</h3>
+            <button onclick="loadUsers()">Cargar Usuarios</button>
+            <div id="user-list"></div>
+        </section>
+
+        <section id="product-management">
+            <h3>Gestión de Productos</h3>
+            <button onclick="loadProducts()">Cargar Productos</button>
+            <div id="product-list"></div>
+        </section>
+
+        <section id="order-management">
+            <h3>Gestión de Pedidos</h3>
+            <button onclick="loadOrders()">Cargar Pedidos</button>
+            <div id="order-list"></div>
+        </section>
+    </main>
+
+    <script src="../static/js/admin.js"></script> <!-- Asegúrate de crear este archivo JS -->
+</body>
+</html>

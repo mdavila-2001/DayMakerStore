@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #111925;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.bubbles {
+    position: relative;
+    display: flex;
+}
+
+.bubbles span {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background: #317b8c;
+    margin: 0 0.4%;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #317b8c44,
+                0 0 50px #317b8c,
+                0 0 100px #317b8c;
+    animation: animate 15s linear infinite;
+    animation-duration: calc(60s / var(--i));
+}
+
+.bubbles span:nth-child(even) {
+    background: #39ff92;
+    box-shadow: 0 0 0 10px #39ff9244,
+                0 0 50px #39ff92,
+                0 0 100px #39ff92;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(100vh) scale(0);
+    }
+    100% {
+        transform: translateY(-10vh) scale(1);
+    }
+}
+
+/* Estilo para la capa de superposición (fondo opaco) */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo opaco */
+    z-index: 1; /* Asegurarse de que esté detrás del texto */
+}
+
+.overlay p {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20%;
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    font-family: Arial, sans-serif; /* Cambiar el tipo de letra */
+    z-index: 2; /* Asegurarse de que esté encima del fondo opaco */
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+    .overlay p {
+        font-size: 50px; /* Estilo para Tablets */
+        text-align: center;
+    }
+}
+
+@media (min-width: 992px) {
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+    }
+    
+    .overlay p {
+        position: absolute;
+        top: 0;
+        right: 18%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 20%;
+        color: #fff;
+        font-size: 48px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        z-index: 2;
+    }
+}

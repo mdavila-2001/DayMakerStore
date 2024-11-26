@@ -1,0 +1,204 @@
+/* Estilos generales y fondo */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    background-color: #0c192c;
+}
+
+/* Estilos para el encabezado */
+.appbar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Alinear a la izquierda */
+    text-align: center; /* Alinear texto al centro */
+    padding: 1%;
+    background-color: #6588b33c; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    width: 100%;
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+.appbar .titulo {
+    font-size: 18px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    margin-left: 3%; /* Margen izquierdo */
+}
+
+.appbar .acciones {
+    display: none; /* Ocultar por defecto */
+}
+
+.appbar .acciones button {
+    background-color: transparent; /* Fondo transparente */
+    border: none; /* Sin borde */
+    padding: 10px; /* Espaciado interno */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    color: #fff; /* Color del ícono */
+    font-size: 20px; /* Tamaño del ícono */
+    width: 100%; /* Botones de ancho completo */
+}
+
+.appbar .acciones button:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo al pasar el mouse */
+}
+
+/* Estilos para el menú hamburguesa */
+.menu-hamburguesa {
+    display: block; /* Mostrar el menú hamburguesa */
+    background: transparent; /* Fondo transparente */
+    border: none; /* Sin borde */
+    color: #fff; /* Color del ícono */
+    font-size: 24px; /* Tamaño del ícono */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+}
+
+/* Menú desplegable */
+.menu-desplegable {
+    display: none; /* Ocultar por defecto */
+    position: absolute; /* Posicionamiento absoluto */
+    left: 0; /* Alinear a la izquierda */
+    top: 0; /* Alinear en la parte superior */
+    width: 50%; /* Ancho completo del menú en móviles */
+    height: 100%; /* Altura automática */
+    background-color: #6588b3f1; /* Color de fondo */
+    border-radius: 5px; /* Bordes redondeados */
+    z-index: 1000; /* Asegurar que esté encima */
+    overflow-y: auto; /* Desplazamiento vertical */
+    padding: 3%; /* Espaciado interno */
+    opacity: 0; /* Ocultar inicialmente */
+    transform: translateX(-20px); /* Desplazamiento inicial */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-desplegable.show {
+    display: block; /* Mostrar el menú */
+    opacity: 1; /* Opacidad completa */
+    transform: translateX(0); /* Sin desplazamiento */
+}
+
+.cerrar-menu {
+    display: flex; /* Mostrar el botón para cerrar */
+    justify-content: flex-start; /* Alinear a la izquierda */
+    padding: 10px; /* Espaciado interno */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+}
+
+.cerrar-menu i {
+    color: #fff; /* Color del ícono */
+    font-size: 24px; /* Tamaño del ícono */
+}
+
+/* Estilos para el usuario */
+.menu-desplegable img.usuario-icono {
+    width: 80px; /* Ancho de la imagen del usuario */
+    height: 80px; /* Alto de la imagen del usuario */
+    border-radius: 50%; /* Bordes redondeados */
+    margin: 10px; /* Margen */
+    align-self: center; /* Centrar horizontalmente */
+}
+
+.menu-desplegable label {
+    display: block; /* Mostrar como bloque */
+    padding: 10px; /* Espaciado interno */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    font-weight: bold; /* Negrita */
+    text-align: left;
+}
+
+.menu-desplegable label:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo al pasar el mouse */
+}
+
+/* Media queries para pantallas más grandes */
+@media (min-width: 768px) {
+    .appbar {
+        flex-direction: row; /* Alinear elementos en fila en pantallas más grandes */
+        align-items: center; /* Centrar verticalmente */
+        padding: 2%; /* Aumentar el espaciado en pantallas más grandes */
+    }
+
+    .appbar .acciones {
+        flex-direction: row; /* Alinear botones en fila */
+        width: auto; /* Ancho automático */
+    }
+
+    .appbar .titulo {
+        font-size: 24px; /* Aumentar el tamaño de la fuente en pantallas más grandes */
+    }
+
+    .appbar .acciones button {
+        font-size: 22px; /* Aumentar el tamaño del ícono en pantallas más grandes */
+        width: auto; /* Ancho automático para botones */
+    }
+
+    .menu-desplegable {
+        width: 50%; /* Ancho del menú en pantallas más grandes */
+    }
+}
+
+/* Media query para pantallas de 992px o más (PC) */
+@media (min-width: 992px) {
+    .main-container {
+        padding: 5%;
+    }
+
+    .appbar{
+        margin: 0 5%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .appbar .titulo {
+        font-size: 24px;
+        margin-left: 1%;
+        text-align: left;
+        flex-grow: 1;
+    }
+
+    .appbar .acciones {
+        display: flex;
+        gap: 1%;
+        margin-right: 2%;
+    }
+
+    .appbar .acciones button {
+        font-size: 22px;
+    }
+    .usuario-icono {
+        margin: 0 6%;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    
+    .acciones button {
+        background-color: transparent;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        display: block;
+    }
+
+    .appbar .acciones button .usuario-icono {
+        display: block;
+    }
+    
+    .appbar .acciones button .fas {
+        display: block;
+    }
+    
+    .acciones button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    .menu-hamburguesa {
+        display: none;
+    }
+
+    .menu-desplegable {
+        display: none;
+    }
+}
