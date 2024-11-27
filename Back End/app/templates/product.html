@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Información del Producto</title>
+    <script src="js/products.js" defer></script>
     <link rel="stylesheet" href="../static/css/product/background.css">
     <link rel="stylesheet" href="../static/css/product/container.css">
     <link rel="stylesheet" href="../static/css/product/details.css">
     <link rel="stylesheet" href="../static/css/product/appbar.css">
-    <link rel="stylesheet" href="../static/css/product/cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
@@ -20,7 +20,7 @@
             Información General
         </h2>
         <div class="acciones">
-            <button onclick="abrircarrito()">
+            <button>
                 <i class="fas fa-shopping-cart"></i>
             </button>
             <button onclick="window.location.href='catalog.html'" style="margin-left: 10px;">
@@ -42,13 +42,6 @@
         </div>
     </header>
     <div id="product-details"></div>
-    <!-- Sidebar del carrito de compras -->
-    <div id="sidebarCarrito" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="cerrarCarrito()">&times;</a>
-        <h2>Carrito de Compras</h2>
-        <div id="carrito-items"></div>
-        <button onclick="finalizarCompra()">Finalizar Compra</button>
-    </div>
     <script src="../static/js/details.js"></script>
 </body>
 </html>

@@ -43,17 +43,6 @@ function mostrarDetallesProducto(producto) {
 
     // Agregar eventos a los botones
     document.getElementById('comprar').addEventListener('click', showError);
-    document.getElementById('carrito').addEventListener('click', function() {
-        const producto = {
-            codProd: productId, // Suponiendo que productId ya está definido
-            nombreProd: producto.nombreProd,
-            precio: producto.precio
-        };
-        agregarAlCarrito(producto);
-    });
-
-    // Agregar eventos a los botones
-    document.getElementById('comprar').addEventListener('click', showError);
     document.getElementById('carrito').addEventListener('click', showError);
 }
 
@@ -61,53 +50,6 @@ function mostrarDetallesProducto(producto) {
 function showError() {
     alert("Error: Debes iniciar sesión para realizar una compra o agregar productos al carrito.");
 }
-
-function agregarAlCarrito(producto) {
-    carrito.push(producto); // Agregar el producto al carrito
-    mostrarCarrito();
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    abrirCarrito(); // Mostrar el sidebar
-}
-
-function abrirCarrito() {
-    const sidebarCarrito = document.getElementById('sidebarCarrito');
-    sidebarCarrito.style.width = '300px'; // O el valor que desees
-}
-
-let carrito = []; // Array para almacenar los productos en el carrito
-
-// Función para agregar un producto al carrito
-function agregarAlCarrito(producto) {
-    carrito.push(producto); // Agregar el producto al carrito
-    mostrarCarrito(); // Actualizar el sidebar con los productos del carrito
-}
-
-// Función para mostrar el carrito en el sidebar
-function mostrarCarrito() {
-    const carritoItems = document.getElementById('carrito-items');
-    carritoItems.innerHTML = ''; // Limpiar el contenido anterior
-
-    carrito.forEach(producto => {
-        const itemDiv = document.createElement('div');
-        itemDiv.textContent = `${producto.nombreProd} - $${producto.precio.toFixed(2)}`;
-        carritoItems.appendChild(itemDiv);
-    });
-}
-
-// Función para finalizar la compra (puedes personalizarla)
-function finalizarCompra() {
-    alert("Compra finalizada!");
-    // Aquí puedes agregar la lógica para enviar el carrito al servidor
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Cargar el carrito desde localStorage
-    const carritoGuardado = localStorage.getItem('carrito');
-    if (carritoGuardado) {
-        carrito = JSON.parse(carritoGuardado); // Convertir de JSON a objeto
-        mostrarCarrito(); // Mostrar los productos en el carrito
-    }
-});
 
 // Llamar a la función para obtener los detalles del producto al cargar la página
 document.addEventListener('DOMContentLoaded', obtenerDetallesProducto);
