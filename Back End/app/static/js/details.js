@@ -51,5 +51,18 @@ function showError() {
     alert("Error: Debes iniciar sesión para realizar una compra o agregar productos al carrito.");
 }
 
+function abrirCarrito() {
+    document.getElementById("sidebarCarrito").style.width = "250px";
+}
+
+function cerrarCarrito() {
+    document.getElementById("sidebarCarrito").style.width = "0";
+}
+
+function finalizarCompra() {
+    // Lógica para finalizar la compra
+    alert("Compra finalizada!");
+}
+
 // Llamar a la función para obtener los detalles del producto al cargar la página
 document.addEventListener('DOMContentLoaded', obtenerDetallesProducto);

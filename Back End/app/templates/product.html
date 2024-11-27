@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../static/css/product/container.css">
     <link rel="stylesheet" href="../static/css/product/details.css">
     <link rel="stylesheet" href="../static/css/product/appbar.css">
+    <link rel="stylesheet" href="../static/css/product/cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
@@ -42,6 +43,13 @@
         </div>
     </header>
     <div id="product-details"></div>
+    <!-- Sidebar del carrito de compras -->
+    <div id="sidebarCarrito" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="cerrarCarrito()">&times;</a>
+        <h2>Carrito de Compras</h2>
+        <div id="carrito-items"></div>
+        <button onclick="finalizarCompra()">Finalizar Compra</button>
+    </div>
     <script src="../static/js/details.js"></script>
 </body>
 </html>
