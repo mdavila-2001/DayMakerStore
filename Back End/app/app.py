@@ -9,7 +9,7 @@ from routes.pedidos import api as pedidos_ns
 from routes.detalles_pedido import api as detalles_pedido_ns
 from routes.tipo_usuarios import api as tipo_usuario_ns
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 app.config.from_object(Config)
 CORS(app)
 

@@ -69,6 +69,11 @@ function agregarAlCarrito(producto) {
     abrirCarrito(); // Mostrar el sidebar
 }
 
+function abrirCarrito() {
+    const sidebarCarrito = document.getElementById('sidebarCarrito');
+    sidebarCarrito.style.width = '300px'; // O el valor que desees
+}
+
 let carrito = []; // Array para almacenar los productos en el carrito
 
 // Función para agregar un producto al carrito
