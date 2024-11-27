@@ -41,34 +41,11 @@
     <div id="sidebar-carrito" class="sidebar">
         <h2>Carrito de Compras</h2>
         <div id="carrito-contenido"></div>
-        <button id="comprar">Comprar</button>
+        <button class="comprar">Comprar</button>
         <button class="closebtn" onclick="cerrarCarrito()">Cerrar</button>
     </div>
     <script src="../static/js/products.js"></script>
     <script src="../static/js/cart.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const nombreUsuario = localStorage.getItem('nombreUsuario');
-            const fotoPerfil = localStorage.getItem('fotoPerfil');
-
-            if (nombreUsuario) {
-                document.getElementById('usuario-nombre').textContent = nombreUsuario;
-                document.getElementById('usuario-foto').src = fotoPerfil;
-                document.getElementById('usuario-icono').src = fotoPerfil;
-            } else {
-                document.getElementById('usuario-nombre').textContent = 'Invitado';
-                document.getElementById('usuario-foto').src = '../static/img/invitado.png';
-                document.getElementById('usuario-icono').src = '../static/img/invitado.png';
-            }
-        });
-
-        function cerrarSesion() {
-            localStorage.removeItem('nombreUsuario');
-            localStorage.removeItem('fotoPerfil');
-            localStorage.removeItem('token');
-            localStorage.clear();
-            window.location.href = 'login.html';
-        }
-    </script>
+    <script src="../static/js/order.js"></script>
 </body>
 </html>

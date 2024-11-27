@@ -24,7 +24,12 @@
     border: none; /* Sin borde */
     padding: 10px; /* Espaciado interno */
     cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    margin-top: 20px; /* Margen superior */
+    margin-top: 10px; /* Margen superior */
+    width: 100%; /* Ancho completo */
+}
+
+.closebtn:hover {
+    background-color: #d32f2f; /* Color de fondo más oscuro al pasar el mouse */
 }
 
 /* Estilos para el contenido del carrito */
@@ -33,7 +38,7 @@
 }
 
 /* Estilos para los botones */
-button {
+.comprar {
     background-color: #4CAF50; /* Color de fondo verde */
     color: white; /* Color del texto */
     border: none; /* Sin borde */
@@ -44,6 +49,6 @@ button {
 }
 
 /* Efecto al pasar el mouse sobre los botones */
-button:hover {
+.comprar:hover {
     background-color: #45a049; /* Color de fondo más oscuro al pasar el mouse */
 }

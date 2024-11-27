@@ -28,6 +28,16 @@
     margin-top: 20px; /* Margen superior */
 }
 
+/* Estilos para el botón de cerrar */
+.comprar {
+    background-color: #4CAF50; /* Color de fondo rojo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    margin-top: 20px; /* Margen superior */
+}
+
 /* Estilos para el contenido del carrito */
 #carrito-contenido {
     margin-top: 20px; /* Espaciado superior */
