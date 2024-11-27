@@ -1,3 +1,4 @@
+/* Estilos para el sidebar */
 .sidebar {
     height: 100%; /* Altura completa */
     width: 300px; /* Ancho del sidebar */
@@ -7,7 +8,7 @@
     right: -300px; /* Comienza oculto a la derecha */
     background-color: #111; /* Color de fondo */
     overflow-y: auto; /* Permite desplazamiento si es necesario */
-    transition: right 0.5s; /* Transición suave para mostrar/ocultar */
+    transition: 0.5s; /* Transición suave para mostrar/ocultar */
     padding: 20px; /* Espaciado interno */
     color: white; /* Color del texto */
 }
@@ -29,21 +30,5 @@
 
 /* Estilos para el contenido del carrito */
 #carrito-contenido {
-    margin-top: 20px; /* Margen superior para el contenido del carrito */
-}
-
-/* Estilos para los botones */
-button {
-    background-color: #4CAF50; /* Color de fondo verde */
-    color: white; /* Color del texto */
-    border: none; /* Sin borde */
-    padding: 10px; /* Espaciado interno */
-    cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    margin-top: 10px; /* Margen superior */
-    width: 100%; /* Ancho completo */
-}
-
-/* Efecto al pasar el mouse sobre los botones */
-button:hover {
-    background-color: #45a049; /* Color de fondo más oscuro al pasar el mouse */
+    margin-top: 20px; /* Espaciado superior */
 }

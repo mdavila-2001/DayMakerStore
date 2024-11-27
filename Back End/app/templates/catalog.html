@@ -6,6 +6,7 @@
     <title>Catálogo Principal</title>
     <link rel="stylesheet" href="../static/css/catalog/shop-style.css">
     <link rel="stylesheet" href="../static/css/catalog/header-back.css">
+    <link rel="stylesheet" href="../static/css/catalog/cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
@@ -15,7 +16,7 @@
         </div>
         <h2 class="titulo">Catálogo de Productos</h2>
         <div class="acciones">
-            <button>
+            <button onclick="abrirCarrito()">
                 <i class="fas fa-shopping-cart"></i>
             </button>
             <button>
@@ -36,7 +37,15 @@
         </div>
     </header>
     <div class="catalogo" id="catalogo"></div>
+    <!-- Sidebar del carrito -->
+    <div id="sidebar-carrito" class="sidebar">
+        <h2>Carrito de Compras</h2>
+        <div id="carrito-contenido"></div>
+        <button id="comprar">Comprar</button>
+        <button class="closebtn" onclick="cerrarCarrito()">Cerrar</button>
+    </div>
     <script src="../static/js/products.js"></script>
+    <script src="../static/js/cart.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const nombreUsuario = localStorage.getItem('nombreUsuario');

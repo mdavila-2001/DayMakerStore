@@ -71,3 +71,31 @@ function toggleMenu() {
 
 // Llamar a la función para obtener productos
 document.addEventListener('DOMContentLoaded', obtenerProductos);
+
+// Funciones para abrir y cerrar el carrito
+function abrirCarrito() {
+    document.getElementById("sidebar-carrito").style.right = "0"; // Muestra el sidebar
+    mostrarCarrito(); // Llama a la función para mostrar los productos en el carrito
+}
+
+function cerrarCarrito() {
+    document.getElementById("sidebar-carrito").style.right = "-300px"; // Oculta el sidebar
+}
+
+// Función para mostrar el contenido del carrito
+function mostrarCarrito() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const carritoContenido = document.getElementById('carrito-contenido');
+
+    carritoContenido.innerHTML = ''; // Limpiar el contenido actual
+
+    if (carrito.length === 0) {
+        carritoContenido.innerHTML = '<p>El carrito está vacío.</p>';
+    } else {
+        carrito.forEach(item => {
+            const productoDiv = document.createElement('div');
+            productoDiv.textContent = `Código: ${item.codProd}, Cantidad: ${item.cantidad}`;
+            carritoContenido.appendChild(productoDiv);
+        });
+    }
+}

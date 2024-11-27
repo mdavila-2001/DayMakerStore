@@ -5,13 +5,11 @@ const productId = urlParams.get('id');
 // Función para obtener los detalles del producto
 async function obtenerDetallesProducto() {
     try {
-        const response = await fetch(`http://localhost:5000/productos/${productId}`); // Cambia la URL si es necesario
+        const response = await fetch(`http://localhost:5000/productos/${productId}`);
         if (!response.ok) {
             throw new Error('Producto no encontrado');
         }
         const producto = await response.json();
-
-        // Mostrar los detalles del producto
         mostrarDetallesProducto(producto);
     } catch (error) {
         document.getElementById('product-details').innerHTML = `<p>Error: ${error.message}</p>`;
@@ -51,5 +49,42 @@ function showError() {
     alert("Error: Debes iniciar sesión para realizar una compra o agregar productos al carrito.");
 }
 
+// Función para abrir el carrito
+function abrirCarrito() {
+    const sidebar = document.getElementById("sidebar-carrito");
+    sidebar.style.right = "0"; // Muestra el sidebar
+    mostrarCarrito(); // Llama a la función para mostrar los productos en el carrito
+}
+
+// Función para cerrar el carrito
+function cerrarCarrito() {
+    const sidebar = document.getElementById("sidebar-carrito");
+    sidebar.style.right = "-300px"; // Oculta el sidebar
+}
+
+// Función para mostrar el carrito
+function mostrarCarrito() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || []; // Obtener el carrito del localStorage
+    const carritoContenido = document.getElementById('carrito-contenido');
+
+    carritoContenido.innerHTML = ''; // Limpiar el contenido actual
+
+    if (carrito.length === 0) {
+        carritoContenido.innerHTML = '<p>El carrito está vacío.</p>';
+    } else {
+        carrito.forEach(item => {
+            const productoDiv = document.createElement('div');
+            productoDiv.textContent = `Código: ${item.codProd}, Cantidad: ${item.cantidad}`;
+            carritoContenido.appendChild(productoDiv);
+        });
+    }
+}
+
 // Llamar a la función para obtener los detalles del producto al cargar la página
-document.addEventListener('DOMContentLoaded', obtenerDetallesProducto);
+document.addEventListener('DOMContentLoaded', () => {
+    obtenerDetallesProducto();
+
+    // Configurar el evento para el botón de menú
+    document.querySelector('.menu-hamburguesa').addEventListener('click', toggleMenu);
+    document.querySelector('.acciones button').addEventListener('click', abrirCarrito);
+});
