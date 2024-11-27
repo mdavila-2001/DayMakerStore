@@ -64,7 +64,8 @@ function showError() {
 
 function agregarAlCarrito(producto) {
     carrito.push(producto); // Agregar el producto al carrito
-    mostrarCarrito(); // Actualizar el sidebar con los productos del carrito
+    mostrarCarrito();
+    localStorage.setItem('carrito', JSON.stringify(carrito));
     abrirCarrito(); // Mostrar el sidebar
 }
 
@@ -93,6 +94,15 @@ function finalizarCompra() {
     alert("Compra finalizada!");
     // Aquí puedes agregar la lógica para enviar el carrito al servidor
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Cargar el carrito desde localStorage
+    const carritoGuardado = localStorage.getItem('carrito');
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado); // Convertir de JSON a objeto
+        mostrarCarrito(); // Mostrar los productos en el carrito
+    }
+});
 
 // Llamar a la función para obtener los detalles del producto al cargar la página
 document.addEventListener('DOMContentLoaded', obtenerDetallesProducto);

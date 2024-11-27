@@ -69,5 +69,14 @@ function toggleMenu() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Cargar el carrito desde localStorage
+    const carritoGuardado = localStorage.getItem('carrito');
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado); // Convertir de JSON a objeto
+        mostrarCarrito(); // Mostrar los productos en el carrito
+    }
+});
+
 // Llamar a la función para obtener productos
 document.addEventListener('DOMContentLoaded', obtenerProductos);
