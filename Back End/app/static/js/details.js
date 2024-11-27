@@ -43,6 +43,17 @@ function mostrarDetallesProducto(producto) {
 
     // Agregar eventos a los botones
     document.getElementById('comprar').addEventListener('click', showError);
+    document.getElementById('carrito').addEventListener('click', function() {
+        const producto = {
+            codProd: productId, // Suponiendo que productId ya está definido
+            nombreProd: producto.nombreProd,
+            precio: producto.precio
+        };
+        agregarAlCarrito(producto);
+    });
+
+    // Agregar eventos a los botones
+    document.getElementById('comprar').addEventListener('click', showError);
     document.getElementById('carrito').addEventListener('click', showError);
 }
 
@@ -51,17 +62,36 @@ function showError() {
     alert("Error: Debes iniciar sesión para realizar una compra o agregar productos al carrito.");
 }
 
-function abrirCarrito() {
-    document.getElementById("sidebarCarrito").style.width = "250px";
+function agregarAlCarrito(producto) {
+    carrito.push(producto); // Agregar el producto al carrito
+    mostrarCarrito(); // Actualizar el sidebar con los productos del carrito
+    abrirCarrito(); // Mostrar el sidebar
 }
 
-function cerrarCarrito() {
-    document.getElementById("sidebarCarrito").style.width = "0";
+let carrito = []; // Array para almacenar los productos en el carrito
+
+// Función para agregar un producto al carrito
+function agregarAlCarrito(producto) {
+    carrito.push(producto); // Agregar el producto al carrito
+    mostrarCarrito(); // Actualizar el sidebar con los productos del carrito
 }
 
+// Función para mostrar el carrito en el sidebar
+function mostrarCarrito() {
+    const carritoItems = document.getElementById('carrito-items');
+    carritoItems.innerHTML = ''; // Limpiar el contenido anterior
+
+    carrito.forEach(producto => {
+        const itemDiv = document.createElement('div');
+        itemDiv.textContent = `${producto.nombreProd} - $${producto.precio.toFixed(2)}`;
+        carritoItems.appendChild(itemDiv);
+    });
+}
+
+// Función para finalizar la compra (puedes personalizarla)
 function finalizarCompra() {
-    // Lógica para finalizar la compra
     alert("Compra finalizada!");
+    // Aquí puedes agregar la lógica para enviar el carrito al servidor
 }
 
 // Llamar a la función para obtener los detalles del producto al cargar la página
