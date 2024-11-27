@@ -15,7 +15,7 @@
             <button class="menu-hamburguesa" onclick="toggleMenu()">&#9776;</button>
         </div>
         <h2 class="titulo" id="header-title">
-            Información General
+            Gestión de Productos
         </h2>
         <div class="acciones">
             <button onclick="window.location.href='admin.html'" style="margin-left: 10px;">
@@ -36,7 +36,7 @@
         </div>
     </header>
     <div class="container">
-        <button onclick="window.location.href='crear_producto.html'" class="btn crear-producto">Crear Producto</button>
+        <button onclick="mostrarModalCrearProducto()" class="btn crear-producto">Crear Producto</button>
         <table id="productos-table">
             <thead>
                 <tr>
@@ -85,6 +85,74 @@
                     <textarea id="editDescripcion" name="descProd" required></textarea>
                 </div>
                 <button type="submit">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para crear producto -->
+    <div id="createProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModalCrearProducto()">&times;</span>
+            <h2>Crear Producto</h2>
+            <form id="createProductForm">
+                <div>
+                    <label for="createCodProd">Código del Producto:</label>
+                    <input type="text" id="createCodProd" name="codProd" required>
+                </div>
+                <div>
+                    <label for="createNombreProd">Nombre:</label>
+                    <input type="text" id="createNombreProd" name="nombreProd" required>
+                </div>
+                <div>
+                    <label for="createTipoProducto">Tipo de Producto:</label>
+                    <input type="text" id="createTipoProducto" name="tipoProducto" required>
+                </div>
+                <div>
+                    <label for="createPlataforma">Plataforma:</label>
+                    <input type="text" id="createPlataforma" name="plataforma" required>
+                </div>
+                <div>
+                    <label for="createPrecio">Precio:</label>
+                    <input type="number" id="createPrecio" name="precio" required>
+                </div>
+                <div>
+                    <label for="createDescuento">¿Tiene Descuento?</label>
+                    <select id="createDescuento" name="descuento" required>
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="createPorcentajeDescuento">Porcentaje de Descuento:</label>
+                    <input type="number" id="createPorcentajeDescuento" name="porcentajeDescuento">
+                </div>
+                <div>
+                    <label for="createFoto">URL de la Foto:</label>
+                    <input type="text" id="createFoto" name="foto" required>
+                </div>
+                <div>
+                    <label for="createCombo">¿Es Combo?</label>
+                    <select id="createCombo" name="combo" required>
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="createDescripcion">Descripción:</label>
+                    <textarea id="createDescripcion" name="descProd" required></textarea>
+                </div>
+                <div>
+                    <label for="createHayStock">¿Hay Stock?</label>
+                    <select id="createHayStock" name="hayStock" required>
+                        <option value="true">Sí</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="createStock">Stock:</label>
+                    <input type="number" id="createStock" name="stock" required>
+                </div>
+                <button type="submit">Crear Producto</button>
             </form>
         </div>
     </div>

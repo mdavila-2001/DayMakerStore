@@ -36,20 +36,12 @@
         <main>
             <section id="user-management">
                 <h3>Gestión de Usuarios</h3>
-                <button onclick="">Gestionar Usuarios</button>
-                <div id="user-list"></div>
+                <button onclick="window.location.href='admin_users.html'">Gestionar Usuarios</button>
             </section>
             
             <section id="product-management">
                 <h3>Gestión de Productos</h3>
                 <button onclick="window.location.href='admin_prod.html'">Gestionar Productos</button>
-                <div id="product-list"></div>
-            </section>
-            
-            <section id="order-management">
-                <h3>Gestión de Pedidos</h3>
-                <button onclick="">Gestionar Pedidos</button>
-                <div id="order-list"></div>
             </section>
         </main>
     </div>
@@ -77,7 +69,27 @@
             localStorage.clear();
             window.location.href = 'login.html';
         }
+        // Función para cerrar el menú
+    function cerrarMenu() {
+        const menu = document.getElementById('menuDesplegable');
+        menu.classList.remove('show'); // Quitar la clase que muestra el menú
+        setTimeout(() => {
+            menu.style.display = 'none'; // Ocultar el menú después de la animación
+        }, 300); // Esperar el tiempo de la animación
+    }
+
+    // Función para mostrar el menú
+    function toggleMenu() {
+        const menu = document.getElementById('menuDesplegable');
+        if (menu.style.display === 'block') {
+            cerrarMenu();
+        } else {
+            menu.style.display = 'block';
+            setTimeout(() => {
+                menu.classList.add('show');
+            }, 10);
+        }
+    }
     </script>
-    <script src="../static/js/admin.js"></script>
 </body>
 </html>

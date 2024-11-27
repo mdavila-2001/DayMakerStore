@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" href="../static/css/admin/appbar.css">
+    <link rel="stylesheet" href="../static/css/admin/buttons.css">
+    <link rel="stylesheet" href="../static/css/admin/prod/table.css">
+    <link rel="stylesheet" href="../static/css/admin/users/users.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header class="appbar">
+        <div class="menu-lateral">
+            <button class="menu-hamburguesa" onclick="toggleMenu()">&#9776;</button>
+        </div>
+        <h2 class="titulo" id="header-title">
+            Gestión de Usuarios
+        </h2>
+        <div class="acciones">
+            <button onclick="window.location.href='admin.html'" style="margin-left: 10px;">
+                <i class="fas fa-home"></i>
+            </button>
+            <img src="../static/img/admin.png" alt="Usuario" class="usuario-icono" id="usuario-icono">
+            <button onclick="cerrarSesion()">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+        <div class="menu-desplegable" id="menuDesplegable">
+            <div class="cerrar-menu" onclick="cerrarMenu()">
+                <i class="fas fa-times"></i>
+            </div>
+            <img id="usuario-foto" src="../static/img/admin.png" alt="Foto de Usuario" class="usuario-icono">
+            <label id="usuario-nombre">Invitado</label>
+            <label class="logout" onclick="cerrarSesion()">Cerrar Sesión</label>
+        </div>
+    </header>
+    <div class="container">
+        <button onclick="mostrarModalCrearUsuario()" class="btn crear-usuario">Crear Usuario</button>
+        <table id="usuarios-table">
+            <thead>
+                <tr>
+                    <th>ID Usuario</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Tipo de Usuario</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se llenarán los usuarios -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal para editar usuario -->
+    <div id="editUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <h2>Editar Usuario</h2>
+            <form id="editUser Form">
+                <input type="hidden" id="editIDUsuario" name="idUsuario">
+                <div>
+                    <label for="editNombre">Nombre:</label>
+                    <input type="text" id="editNombre" name="nombre" required>
+                </div>
+                <div>
+                    <label for="editCorreo">Correo Electrónico:</label>
+                    <input type="email" id="editCorreo" name="correo" required>
+                </div>
+                <div>
+                    <label for="editTipoUsuario">Tipo de Usuario:</label>
+                    <input type="text" id="editTipoUsuario" name="tipoUsuario" required>
+                </div>
+                <button type="submit">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para crear usuario -->
+    <div id="createUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModalCrearUsuario()">&times;</span>
+            <h2>Crear Usuario</h2>
+            <form id="createUser Form">
+                <div>
+                    <label for="createNombre">Nombre:</label>
+                    <input type="text" id="createNombre" name="nombre" required>
+                </div>
+                <div>
+                    <label for="createCorreo">Correo Electrónico:</label>
+                    <input type="email" id="createCorreo" name="correo" required>
+                </div>
+                <div>
+                    <label for="createUsuario">Nombre de Usuario:</label>
+                    <input type=" text" id="createUsuario" name="nombreUsuario" required>
+                </div>
+                <div>
+                    <label for="createContrasena">Contraseña:</label>
+                    <input type="password" id="createContrasena" name="contrasena" required>
+                </div>
+                <div>
+                    <label for="createCelular">Celular:</label>
+                    <input type="text" id="createCelular" name="celular" required>
+                </div>
+                <div>
+                    <label for="createDireccion">Dirección:</label>
+                    <input type="text" id="createDireccion" name="direccion" required>
+                </div>
+                <div>
+                    <label for="createEdad">Edad:</label>
+                    <input type="number" id="createEdad" name="edad" required>
+                </div>
+                <div>
+                    <label for="tipo-usuario">Tipo de Usuario:</label>
+                    <select id="tipo-usuario" name="tipoUsuario" required>
+                        <option value="" disabled selected>Selecciona un tipo de usuario</option>
+                        <!-- Las opciones se llenarán dinámicamente aquí -->
+                    </select>
+                </div>
+                <div>
+                    <label for="foto-perfil">Selecciona una foto:</label>
+                    <input type="file" id="foto-perfil" accept="image/*" required>
+                    <button type="button" id="eliminar-foto" style="display: none;">X</button>
+                </div>
+                <button type="submit">Crear Usuario</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nombreUsuario = localStorage.getItem('nombreUsuario');
+            const fotoPerfil = localStorage.getItem('fotoPerfil');
+
+            if (nombreUsuario) {
+                document.getElementById('usuario-nombre').textContent = nombreUsuario;
+                document.getElementById('usuario-foto').src = fotoPerfil;
+                document.getElementById('usuario-icono').src = fotoPerfil;
+            } else {
+                document.getElementById('usuario-nombre').textContent = 'Invitado';
+                document.getElementById('usuario-foto').src = '../static/img/admin.png';
+                document.getElementById('usuario-icono').src = '../static/img/admin.png';
+            }
+        });
+
+        // Función para cerrar sesión
+        function cerrarSesion() {
+            localStorage.removeItem('nombreUsuario');
+            localStorage.removeItem('fotoPerfil');
+            localStorage.removeItem('token');
+            localStorage.clear();
+            window.location.href = 'login.html';
+        }
+    </script>
+    <script src="../static/js/admin_users.js"></script>
+</body>
+</html>

@@ -6,9 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('usuario-nombre').textContent = nombreUsuario;
         document.getElementById('usuario-foto').src = fotoPerfil;
         document.getElementById('usuario-icono').src = fotoPerfil;
-
-        // Crear un pedido automáticamente al cargar la página
-        crearPedido();
     } else {
         document.getElementById('usuario-nombre').textContent = 'Invitado';
         document.getElementById('usuario-foto').src = '../static/img/invitado.png';
@@ -17,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 async function crearPedido() {
-    const IDUsuario = localStorage.getItem('IDUsuario'); // Asegúrate de que el ID del usuario esté almacenado en localStorage
-    const NIT = '1111111'; // Puedes cambiar esto según sea necesario
+    const IDUsuario = localStorage.getItem('IDUsuario');
+    const NIT = '1111111';
 
     const pedidoData = {
         IDUsuario: IDUsuario,

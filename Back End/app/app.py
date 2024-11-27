@@ -57,5 +57,9 @@ def admin():
 def admin_prod():
     return render_template('admin_prod.html')
 
+@app.route('/admin_users.html')
+def admin_users():
+    return render_template('admin_users.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

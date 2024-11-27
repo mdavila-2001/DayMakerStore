@@ -54,7 +54,18 @@
     </div>
 
     <script>
-        // Aquí puedes incluir el código JavaScript que ya hemos discutido
+        const nombreUsuario = localStorage.getItem('nombreUsuario');
+    const fotoPerfil = localStorage.getItem('fotoPerfil');
+
+    if (nombreUsuario) {
+        document.getElementById('usuario-nombre').textContent = nombreUsuario;
+        document.getElementById('usuario-foto').src = fotoPerfil;
+        document.getElementById('usuario-icono').src = fotoPerfil;
+    } else {
+        document.getElementById('usuario-nombre').textContent = 'Invitado';
+        document.getElementById('usuario-foto').src = '../static/img/invitado.png';
+        document.getElementById('usuario-icono').src = '../static/img/invitado.png';
+    }
     </script>
 </body>
 </html>
