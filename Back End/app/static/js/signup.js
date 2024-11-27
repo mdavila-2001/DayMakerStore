@@ -94,8 +94,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         const tipoUsuarioSelect = document.getElementById('tipo-usuario');
         tiposUsuario.forEach(tipo => {
             const option = document.createElement('option');
-            option.value = tipo.IDType; // ID del tipo de usuario
-            option.textContent = tipo.Tipo; // Nombre del tipo de usuario
+            option.value = tipo.IDType;
+            option.textContent = tipo.Tipo;
             tipoUsuarioSelect.appendChild(option);
         });
     } catch (error) {

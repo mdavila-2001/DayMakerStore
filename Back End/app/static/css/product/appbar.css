@@ -19,6 +19,7 @@ body {
     color: #fff; /* Color del texto */
     width: 100%;
     border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box;
 }
 
 .appbar .titulo {

@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const passwordInput = document.getElementById('password');
     const eyeIcon = document.getElementById('eyeIcon');
 
-    // Verifica si el formulario existe antes de agregar el evento
     if (loginForm) {
         loginForm.addEventListener('submit', async function (event) {
             event.preventDefault(); // Evitar el envío por defecto del formulario
@@ -29,7 +28,32 @@ document.addEventListener('DOMContentLoaded', function () {
                     const result = await response.json();
                     console.log('Inicio de sesión exitoso:', result);
                     localStorage.setItem('token', result.token); // Almacenar el token
-                    window.location.href = 'catalog.html'; // Redirigir a la página de catálogo
+
+                    // Obtener detalles del usuario
+                    const userResponse = await fetch(`http://localhost:5000/usuarios/${data.IDUsuario}`, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${result.token}` // Asegúrate de enviar el token
+                        }
+                    });
+
+                    if (userResponse.ok) {
+                        const userDetails = await userResponse.json();
+                        console.log('Detalles del usuario:', userDetails);
+
+                        localStorage.setItem('nombreUsuario', userDetails.Nombre);
+                        localStorage.setItem('fotoPerfil', userDetails.fotoPerfil);
+
+                        if (userDetails.TipoUsuarioId === 'TU-0000002') {
+                            window.location.href = 'admin.html';
+                        } else {
+                            window.location.href = 'catalog.html';
+                        }
+                    } else {
+                        const error = await userResponse.json();
+                        console.error('Error al obtener detalles del usuario:', error);
+                        alert('Error al obtener detalles del usuario: ' + error.message);
+                    }
                 } else {
                     const error = await response.json();
                     console.error('Error al iniciar sesión:', error);

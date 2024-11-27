@@ -14,11 +14,11 @@ body {
     flex-direction: row;
     align-items: flex-start; /* Alinear a la izquierda */
     text-align: center; /* Alinear texto al centro */
-    padding: 1%;
     background-color: #6588b33c; /* Color de fondo */
     color: #fff; /* Color del texto */
     width: 100%;
-    border-radius: 5px; /* Bordes redondeados */
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .appbar .titulo {
@@ -113,7 +113,7 @@ body {
 }
 
 /* Media queries para pantallas más grandes */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 991px) {
     .appbar {
         flex-direction: row; /* Alinear elementos en fila en pantallas más grandes */
         align-items: center; /* Centrar verticalmente */
@@ -146,6 +146,7 @@ body {
     }
 
     .appbar{
+        padding: 0.5%;
         margin: 0 5%;
         display: flex;
         justify-content: space-between;
@@ -173,6 +174,15 @@ body {
         height: 40px;
         border-radius: 50%;
         cursor: pointer;
+    }
+
+    .usuario-icono img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
     }
     
     .acciones button {

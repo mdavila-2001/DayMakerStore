@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administrador</title>
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="../static/css/admin/prod/table.css">
     <link rel="stylesheet" href="../static/css/admin/appbar.css">
-    <link rel="stylesheet" href="../static/css/admin/buttons.css">
-    <link rel="stylesheet" href="../static/css/admin/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="../static/js/admin.js" defer></script>
 </head>
 <body>
     <header class="appbar">
@@ -18,6 +18,9 @@
             Información General
         </h2>
         <div class="acciones">
+            <button onclick="window.location.href='admin.html'" style="margin-left: 10px;">
+                <i class="fas fa-home"></i>
+            </button>
             <img src="../static/img/admin.png" alt="Usuario" class="usuario-icono" id="usuario-icono">
             <button onclick="cerrarSesion()">
                 <i class="fas fa-sign-out-alt"></i>
@@ -33,26 +36,59 @@
         </div>
     </header>
     <div class="container">
-        <main>
-            <section id="user-management">
-                <h3>Gestión de Usuarios</h3>
-                <button onclick="">Gestionar Usuarios</button>
-                <div id="user-list"></div>
-            </section>
-            
-            <section id="product-management">
-                <h3>Gestión de Productos</h3>
-                <button onclick="window.location.href='admin_prod.html'">Gestionar Productos</button>
-                <div id="product-list"></div>
-            </section>
-            
-            <section id="order-management">
-                <h3>Gestión de Pedidos</h3>
-                <button onclick="">Gestionar Pedidos</button>
-                <div id="order-list"></div>
-            </section>
-        </main>
+        <button onclick="window.location.href='crear_producto.html'" class="btn crear-producto">Crear Producto</button>
+        <table id="productos-table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se llenarán los productos -->
+            </tbody>
+        </table>
     </div>
+
+    <!-- Modal para editar producto -->
+    <div id="editProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <h2>Editar Producto</h2>
+            <form id="editProductForm">
+                <input type="hidden" id="editCodProd" name="codProd">
+                <div>
+                    <label for="editNombreProd">Nombre:</label>
+                    <input type="text" id="editNombreProd" name="nombreProd" required>
+                </div>
+                <div>
+                    <label for="editPrecio">Precio:</label>
+                    <input type="number" id="editPrecio" name="precio" required>
+                </div>
+                <div>
+                    <label for="editStock">Stock:</label>
+                    <input type="number" id="editStock" name="stock" required>
+                </div>
+                <div>
+                    <label for="editTipoProducto">Tipo de Producto:</label>
+                    <input type="text" id="editTipoProducto" name="tipoProducto" required>
+                </div>
+                <div>
+                    <label for="editPlataforma">Plataforma:</label>
+                    <input type="text" id="editPlataforma" name="plataforma" required>
+                </div>
+                <div>
+                    <label for="editDescripcion">Descripción:</label>
+                    <textarea id="editDescripcion" name="descProd" required></textarea>
+                </div>
+                <button type="submit">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const nombreUsuario = localStorage.getItem('nombreUsuario');
@@ -78,6 +114,5 @@
             window.location.href = 'login.html';
         }
     </script>
-    <script src="../static/js/admin.js"></script>
 </body>
 </html>

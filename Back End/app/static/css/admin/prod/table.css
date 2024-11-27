@@ -1,0 +1,102 @@
+/* Estilos generales para el cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Color de fondo suave */
+    margin: 0; /* Eliminar márgenes por defecto */
+    padding: 20px; /* Espaciado interno */
+}
+
+/* Estilos para el encabezado */
+header {
+    display: flex; /* Usar flexbox para alinear elementos */
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: center; /* Centrar verticalmente */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+/* Estilos para el título */
+h1 {
+    font-size: 24px; /* Tamaño de fuente del título */
+    color: #333; /* Color del texto */
+}
+
+/* Estilos para los botones */
+button {
+    background-color: #317b8c; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+/* Estilo al pasar el mouse sobre el botón */
+button:hover {
+    background-color: #4c97a8; /* Color de fondo al pasar el mouse */
+}
+
+.container{
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    margin: 1% 0;
+}
+
+.container button{
+    align-items: end;
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Colapsar bordes */
+    margin-top: 20px; /* Espaciado superior */
+    background-color: white; /* Color de fondo de la tabla */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para la tabla */
+}
+
+/* Estilos para celdas de la tabla */
+th, td {
+    padding: 10px; /* Espaciado interno */
+    text-align: left; /* Alinear texto a la izquierda */
+    border-bottom: 1px solid #ddd; /* Línea divisoria inferior */
+}
+
+th {
+    background-color: #317b8c;
+    color: white;
+}
+
+/* Estilo al pasar el mouse sobre las filas de la tabla */
+tr:hover {
+    background-color: #f1f1f1; /* Color de fondo al pasar el mouse */
+}
+
+.actions-container {
+    display: flex;
+    gap: 30px;
+}
+
+.edit-button {
+    background-color: green; /* Color de fondo verde */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px; /* Espaciado interno */
+    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    opacity: 0.8;
+}

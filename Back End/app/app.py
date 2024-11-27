@@ -53,5 +53,9 @@ def register():
 def admin():
     return render_template('admin.html')
 
+@app.route('/admin_prod.html')
+def admin_prod():
+    return render_template('admin_prod.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
