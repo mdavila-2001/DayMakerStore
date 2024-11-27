@@ -3,11 +3,11 @@ from flask_restx import Api
 from flask_cors import CORS  # Importar CORS
 from config import Config
 from models import db
-from apis.usuarios import api as usuarios_ns
-from apis.productos import api as productos_ns
-from apis.pedidos import api as pedidos_ns
-from apis.detalles_pedido import api as detalles_pedido_ns
-from apis.tipo_usuarios import api as tipo_usuario_ns
+from routes.usuarios import api as usuarios_ns
+from routes.productos import api as productos_ns
+from routes.pedidos import api as pedidos_ns
+from routes.detalles_pedido import api as detalles_pedido_ns
+from routes.tipo_usuarios import api as tipo_usuario_ns
 
 app = Flask(__name__)
 app.config.from_object(Config)
