@@ -8,135 +8,130 @@ body {
     background-color: #0c192c;
 }
 
-/* Estilos para el encabezado */
 .appbar {
     display: flex;
     flex-direction: row;
-    align-items: flex-start; /* Alinear a la izquierda */
-    text-align: center; /* Alinear texto al centro */
+    align-items: flex-start;
+    text-align: center;
     padding: 1%;
-    background-color: #6588b33c; /* Color de fondo */
-    color: #fff; /* Color del texto */
+    background-color: #6588b33c;
+    color: #fff;
     width: 100%;
-    border-radius: 5px; /* Bordes redondeados */
+    border-radius: 5px;
     box-sizing: border-box;
 }
 
 .appbar .titulo {
-    font-size: 18px; /* Tamaño de fuente */
-    font-weight: bold; /* Negrita */
-    margin-left: 3%; /* Margen izquierdo */
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 3%;
 }
 
 .appbar .acciones {
-    display: none; /* Ocultar por defecto */
+    display: none;
 }
 
 .appbar .acciones button {
-    background-color: transparent; /* Fondo transparente */
-    border: none; /* Sin borde */
-    padding: 10px; /* Espaciado interno */
-    cursor: pointer; /* Cambiar cursor al pasar el mouse */
-    color: #fff; /* Color del ícono */
-    font-size: 20px; /* Tamaño del ícono */
-    width: 100%; /* Botones de ancho completo */
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+    width: 100%;
 }
 
 .appbar .acciones button:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Fondo al pasar el mouse */
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Estilos para el menú hamburguesa */
 .menu-hamburguesa {
-    display: block; /* Mostrar el menú hamburguesa */
-    background: transparent; /* Fondo transparente */
-    border: none; /* Sin borde */
-    color: #fff; /* Color del ícono */
-    font-size: 24px; /* Tamaño del ícono */
-    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    display: block;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
 }
 
-/* Menú desplegable */
 .menu-desplegable {
-    display: none; /* Ocultar por defecto */
-    position: absolute; /* Posicionamiento absoluto */
-    left: 0; /* Alinear a la izquierda */
-    top: 0; /* Alinear en la parte superior */
-    width: 50%; /* Ancho completo del menú en móviles */
-    height: 100%; /* Altura automática */
-    background-color: #6588b3f1; /* Color de fondo */
-    border-radius: 5px; /* Bordes redondeados */
-    z-index: 1000; /* Asegurar que esté encima */
-    overflow-y: auto; /* Desplazamiento vertical */
-    padding: 3%; /* Espaciado interno */
-    opacity: 0; /* Ocultar inicialmente */
-    transform: translateX(-20px); /* Desplazamiento inicial */
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #6588b3f1;
+    border-radius: 5px;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 3%;
+    opacity: 0;
+    transform: translateX(-20px);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .menu-desplegable.show {
-    display: block; /* Mostrar el menú */
-    opacity: 1; /* Opacidad completa */
-    transform: translateX(0); /* Sin desplazamiento */
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .cerrar-menu {
-    display: flex; /* Mostrar el botón para cerrar */
-    justify-content: flex-start; /* Alinear a la izquierda */
-    padding: 10px; /* Espaciado interno */
-    cursor: pointer; /* Cambiar cursor al pasar el mouse */
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .cerrar-menu i {
-    color: #fff; /* Color del ícono */
-    font-size: 24px; /* Tamaño del ícono */
+    color: #fff;
+    font-size: 24px;
 }
 
-/* Estilos para el usuario */
 .menu-desplegable img.usuario-icono {
-    width: 80px; /* Ancho de la imagen del usuario */
-    height: 80px; /* Alto de la imagen del usuario */
-    border-radius: 50%; /* Bordes redondeados */
-    margin: 10px; /* Margen */
-    align-self: center; /* Centrar horizontalmente */
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 10px;
+    align-self: center;
 }
 
 .menu-desplegable label {
-    display: block; /* Mostrar como bloque */
-    padding: 10px; /* Espaciado interno */
-    cursor: pointer; /* Cambiar cursor al pasar el mouse */
-    font-weight: bold; /* Negrita */
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
     text-align: left;
 }
 
 .menu-desplegable label:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Fondo al pasar el mouse */
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Media queries para pantallas más grandes */
 @media (min-width: 768px) {
     .appbar {
-        flex-direction: row; /* Alinear elementos en fila en pantallas más grandes */
-        align-items: center; /* Centrar verticalmente */
-        padding: 2%; /* Aumentar el espaciado en pantallas más grandes */
+        flex-direction: row;
+        align-items: center;
+        padding: 2%;
     }
 
     .appbar .acciones {
-        flex-direction: row; /* Alinear botones en fila */
-        width: auto; /* Ancho automático */
+        flex-direction: row;
+        width: auto;
     }
 
     .appbar .titulo {
-        font-size: 24px; /* Aumentar el tamaño de la fuente en pantallas más grandes */
+        font-size: 24px;
     }
 
     .appbar .acciones button {
-        font-size: 22px; /* Aumentar el tamaño del ícono en pantallas más grandes */
-        width: auto; /* Ancho automático para botones */
+        font-size: 22px;
+        width: auto;
     }
 
     .menu-desplegable {
-        width: 50%; /* Ancho del menú en pantallas más grandes */
+        width: 50%;
     }
 }
 

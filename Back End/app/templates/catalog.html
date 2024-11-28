@@ -44,6 +44,15 @@
         <button class="comprar">Comprar</button>
         <button class="closebtn" onclick="cerrarCarrito()">Cerrar</button>
     </div>
+    <script>
+        function cerrarSesion() {
+            localStorage.removeItem('nombreUsuario');
+            localStorage.removeItem('fotoPerfil');
+            localStorage.removeItem('token');
+            localStorage.clear();
+            window.location.href = 'login.html';
+        }
+    </script>
     <script src="../static/js/products.js"></script>
     <script src="../static/js/cart.js"></script>
     <script src="../static/js/order.js"></script>

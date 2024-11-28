@@ -25,7 +25,7 @@ body {
 
 .profile-img {
     position: relative;
-    top: 40px; /* Ajustamos el top para que esté bien posicionado */
+    top: 40px;
 }
 
 .profile-img img {
@@ -44,7 +44,7 @@ body {
     width: 320px;
     text-align: center;
     position: relative;
-    margin-top: 40px; /* Espaciado para que la caja esté debajo de la imagen */
+    margin-top: 40px;
 }
 
 .login-form .input-group {

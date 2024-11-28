@@ -2,13 +2,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1200px; /* Limitar el ancho del catálogo */
+    max-width: 1200px;
 }
 
-/* Estilos por defecto para móviles */
 .producto {
     border: 1% solid #ccc;
-    padding: 0.5%; /* Reducido para móviles */
+    padding: 0.5%;
     margin: 1%;
     border-radius: 5%;
     width: 48%;
@@ -29,7 +28,7 @@
     font-weight: bold;
     text-decoration: none;
     display: block;
-    font-size: 14px; /* Reducido tamaño de fuente */
+    font-size: 14px;
 }
 
 .producto a:hover{
@@ -43,11 +42,11 @@
 }
 
 .precio {
-    font-size: 12px; /* Reducido tamaño de fuente */
+    font-size: 12px;
 }
 
 .plataforma {
-    font-size: 12px; /* Reducido tamaño de fuente */
+    font-size: 12px;
 }
 
 .contenedor-botones {
@@ -58,7 +57,7 @@
 .contador {
     display: inline-flex;
     align-items: center;
-    margin: 5px 0; /* Reducido para móviles */
+    margin: 5px 0;
 }
 
 .contador button {
@@ -66,57 +65,53 @@
     height: 20px;
 }
 
-/* Media query para tabletas */
 @media (min-width: 768px) and (max-width: 991px) {
     .producto {
-        width: 30%; /* 3 tarjetas por fila para tabletas */
+        width: 30%;
     }
 
     .producto img {
-        height: 200px; /* Ajustar la altura de las imágenes para tabletas */
+        height: 200px;
     }
 
     .contador button {
-        width: 30px; /* Ancho ajustado para tabletas */
-        height: 30px; /* Alto ajustado para tabletas */
+        width: 30px;
+        height: 30px;
     }
 }
 
-/* Media query para pantallas más grandes (opcional) */
 @media (min-width: 992px) {
     .producto {
-        width: 21%; /* 4 tarjetas por fila para pantallas grandes */
+        width: 21%;
     }
 }
 
-/* Estilos para los botones (sin cambios) */
 #comprar {
-    background-color: green; /* Color de fondo verde */
+    background-color: green;
 }
 
 #carrito {
-    background-color: rgb(145, 189, 173); /* Color de fondo verde */
+    background-color: rgb(145, 189, 173);
 }
 
 .contenedor-botones button {
-    padding: 5px 10px; /* Reducido padding para móviles */
+    padding: 5px 10px;
     border: none;
     border-radius: 5px;
     color: #fff;
     background-color: #47a99e;
     cursor: pointer;
-    font-size: 12px; /* Reducido tamaño de fuente */
+    font-size: 12px;
 }
 
 .contenedor-botones button:hover {
     background-color: #3e8e41;
 }
 
-/* Estilos para el contador */
 .contador button:last-child {
-    background-color: #f44336; /* Color rojo para el botón de basura */
+    background-color: #f44336;
 }
 
 .contador button:last-child:hover {
-    background-color: #d32f2f; /* Color al pasar el mouse para el botón de basura */
+    background-color: #d32f2f;
 }

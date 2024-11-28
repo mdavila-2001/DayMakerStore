@@ -61,7 +61,6 @@
             }
         });
 
-        // Función para cerrar sesión
         function cerrarSesion() {
             localStorage.removeItem('nombreUsuario');
             localStorage.removeItem('fotoPerfil');
@@ -69,16 +68,14 @@
             localStorage.clear();
             window.location.href = 'login.html';
         }
-        // Función para cerrar el menú
     function cerrarMenu() {
         const menu = document.getElementById('menuDesplegable');
-        menu.classList.remove('show'); // Quitar la clase que muestra el menú
+        menu.classList.remove('show');
         setTimeout(() => {
-            menu.style.display = 'none'; // Ocultar el menú después de la animación
-        }, 300); // Esperar el tiempo de la animación
+            menu.style.display = 'none';
+        }, 300);
     }
 
-    // Función para mostrar el menú
     function toggleMenu() {
         const menu = document.getElementById('menuDesplegable');
         if (menu.style.display === 'block') {

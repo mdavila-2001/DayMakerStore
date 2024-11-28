@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (loginForm) {
         loginForm.addEventListener('submit', async function (event) {
-            event.preventDefault(); // Evitar el envío por defecto del formulario
+            event.preventDefault();
 
-            const formData = new FormData(loginForm); // Obtener los datos del formulario
+            const formData = new FormData(loginForm);
 
             const data = {
                 IDUsuario: formData.get('username').trim(),
@@ -27,13 +27,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (response.ok) {
                     const result = await response.json();
                     console.log('Inicio de sesión exitoso:', result);
-                    localStorage.setItem('token', result.token); // Almacenar el token
-
-                    // Obtener detalles del usuario
+                    localStorage.setItem('token', result.token);
+                    
                     const userResponse = await fetch(`http://localhost:5000/usuarios/${data.IDUsuario}`, {
                         method: 'GET',
                         headers: {
-                            'Authorization': `Bearer ${result.token}` // Asegúrate de enviar el token
+                            'Authorization': `Bearer ${result.token}`
                         }
                     });
 
@@ -68,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('El formulario de inicio de sesión no se encontró en el DOM.');
     }
 
-    // Funcionalidad para mostrar/ocultar la contraseña
     if (togglePassword && passwordInput && eyeIcon) {
         togglePassword.addEventListener('click', function () {
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';

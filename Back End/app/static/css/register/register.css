@@ -36,11 +36,11 @@ body {
 
 .eye-icon {
     position: absolute;
-    right: 10px; /* Ajusta según sea necesario */
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
-    cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    color: #0099cc; /* Color del ícono */
+    cursor: pointer;
+    color: #0099cc;
 }
 
 .input-group label {

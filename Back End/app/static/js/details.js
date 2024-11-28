@@ -44,30 +44,26 @@ function mostrarDetallesProducto(producto) {
     document.getElementById('carrito').addEventListener('click', showError);
 }
 
-// Función para mostrar el mensaje de error
 function showError() {
     alert("Error: Debes iniciar sesión para realizar una compra o agregar productos al carrito.");
 }
 
-// Función para abrir el carrito
 function abrirCarrito() {
     const sidebar = document.getElementById("sidebar-carrito");
-    sidebar.style.right = "0"; // Muestra el sidebar
-    mostrarCarrito(); // Llama a la función para mostrar los productos en el carrito
+    sidebar.style.right = "0";
+    mostrarCarrito();
 }
 
-// Función para cerrar el carrito
 function cerrarCarrito() {
     const sidebar = document.getElementById("sidebar-carrito");
-    sidebar.style.right = "-300px"; // Oculta el sidebar
+    sidebar.style.right = "-300px";
 }
 
-// Función para mostrar el carrito
 function mostrarCarrito() {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || []; // Obtener el carrito del localStorage
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const carritoContenido = document.getElementById('carrito-contenido');
 
-    carritoContenido.innerHTML = ''; // Limpiar el contenido actual
+    carritoContenido.innerHTML = '';
 
     if (carrito.length === 0) {
         carritoContenido.innerHTML = '<p>El carrito está vacío.</p>';
@@ -80,11 +76,9 @@ function mostrarCarrito() {
     }
 }
 
-// Llamar a la función para obtener los detalles del producto al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     obtenerDetallesProducto();
 
-    // Configurar el evento para el botón de menú
     document.querySelector('.menu-hamburguesa').addEventListener('click', toggleMenu);
     document.querySelector('.acciones button').addEventListener('click', abrirCarrito);
 });

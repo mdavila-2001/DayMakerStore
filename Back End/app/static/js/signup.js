@@ -1,31 +1,27 @@
 const fotoInput = document.getElementById('foto-perfil');
 const eliminarFotoBtn = document.getElementById('eliminar-foto');
-let imageUrl = ''; // Variable para almacenar la URL de la imagen
+let imageUrl = '';
 
-// Manejar el cambio en el input de archivo
 fotoInput.addEventListener('change', function() {
     if (fotoInput.files.length > 0) {
-        eliminarFotoBtn.style.display = 'inline'; // Mostrar botón de eliminar
+        eliminarFotoBtn.style.display = 'inline';
 
-        const file = fotoInput.files[0]; // Obtener el primer archivo
-        const reader = new FileReader(); // Crear un nuevo FileReader
-
-        // Definir la función que se ejecutará cuando se haya leído el archivo
+        const file = fotoInput.files[0];
+        const reader = new FileReader();
+        
         reader.onload = function(e) {
-            imageUrl = e.target.result; // Esta es la URL en base64
-            console.log('URL de la imagen:', imageUrl); // Mostrar la URL en consola
+            imageUrl = e.target.result;
+            console.log('URL de la imagen:', imageUrl);
         };
-
-        // Leer el archivo como una URL de datos (base64)
         reader.readAsDataURL(file);
     }
 });
 
 // Manejar el clic en el botón de eliminar
 eliminarFotoBtn.addEventListener('click', function() {
-    fotoInput.value = ''; // Limpiar el input de archivo
-    eliminarFotoBtn.style.display = 'none'; // Ocultar botón de eliminar
-    imageUrl = ''; // Limpiar la URL de la imagen
+    fotoInput.value = '';
+    eliminarFotoBtn.style.display = 'none';
+    imageUrl = '';
 });
 
 const toggleSignupPassword = document.getElementById('toggleSignupPassword');
@@ -39,14 +35,12 @@ toggleSignupPassword.addEventListener('click', function () {
     signupEyeIcon.classList.toggle('fa-eye-slash');
 });
 
-// Manejar el envío del formulario
 const signupForm = document.getElementById('signup-form');
 signupForm.addEventListener('submit', async function (event) {
-    event.preventDefault(); // Evitar el envío por defecto del formulario
+    event.preventDefault();
 
-    const formData = new FormData(signupForm); // Obtener los datos del formulario
+    const formData = new FormData(signupForm);
 
-    // Convertir FormData a un objeto para JSON
     const data = {
         IDUsuario: formData.get('nombre-usuario').trim(),
         Nombre: formData.get('nombre').trim(),
@@ -56,7 +50,7 @@ signupForm.addEventListener('submit', async function (event) {
         Direccion: formData.get('direccion').trim(),
         Edad: parseInt(formData.get('edad')),
         TipoUsuarioId: formData.get('tipo-usuario').trim(),
-        fotoPerfil: imageUrl // Asignar la URL de la imagen
+        fotoPerfil: imageUrl
     };
 
     try {
@@ -65,15 +59,14 @@ signupForm.addEventListener('submit', async function (event) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data) // Convertir el objeto a JSON
+            body: JSON.stringify(data)
         });
 
         if (response.ok) {
             const result = await response.json();
             console.log('Usuario registrado:', result);
             alert('Registro exitoso');
-            // Redirigir o limpiar el formulario según sea necesario
-            window.location.href = 'login.html'; // Redirigir a la página de inicio de sesión
+            window.location.href = 'login.html';
         } else {
             const error = await response.json();
             console.error('Error al registrar usuario:', error);
@@ -85,7 +78,6 @@ signupForm.addEventListener('submit', async function (event) {
     }
 });
 
-// Cargar tipos de usuario al cargar la página
 document.addEventListener('DOMContentLoaded', async function() {
     try {
         const response = await fetch('http://localhost:5000/tipo_usuarios/');
