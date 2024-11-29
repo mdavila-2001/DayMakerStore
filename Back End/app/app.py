@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask_restx import Api
-from flask_cors import CORS  # Importar CORS
+from flask_cors import CORS
 from config import Config
 from models import db
 from routes.usuarios import api as usuarios_ns
